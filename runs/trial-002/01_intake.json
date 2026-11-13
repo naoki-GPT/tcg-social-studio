@@ -1,0 +1,297 @@
+{
+  "brief": {
+    "audience": {
+      "note": "引き継ぎ前提の仮案。両者の顧客構成を確認した事実ではないため proposed。利用者自身の事業設計（2026-11-01）では海外TCGショップと再販目的の買い手が中心と確定している。",
+      "source_ids": [
+        "S2",
+        "S6"
+      ],
+      "status": "proposed",
+      "value": "日本語版ポケモンカードを補充・再販する小規模カード店とネット販売者（購入用途は自店の品揃えと再販）"
+    },
+    "concept_count": {
+      "status": "confirmed",
+      "value": 1,
+      "note": "利用者の決定は1企画（REF-001型）。",
+      "source_ids": [
+        "S8"
+      ]
+    },
+    "copy_language": {
+      "note": "対象市場（米国の英語圏）に合わせた仮案。",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "proposed",
+      "value": "英語本文＋確認用の全文日本語訳"
+    },
+    "destination": {
+      "note": "実在の相談先・商品ページは共通試作では補わない。原稿確定前に照合する。",
+      "resolve_at_stage": 3,
+      "source_ids": [],
+      "status": "deferred",
+      "value": null
+    },
+    "market": {
+      "note": "比較条件をそろえるための仮置き。需要調査で不適合が分かれば理由を残して修正する。",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "proposed",
+      "value": "米国の英語圏市場"
+    },
+    "media_format": {
+      "status": "confirmed",
+      "value": "静止画カルーセル4枚（1080×1350）。1枚目を新規に実測再現し、2〜4枚目はtrial-001の現行版（2枚目v3／3枚目v3.2／4枚目v3）をそのまま流用",
+      "note": "元の投稿セットと同じ構成（フック＋共通クロージング）。",
+      "source_ids": [
+        "S8"
+      ]
+    },
+    "objective": {
+      "status": "confirmed",
+      "value": "同じ絵柄の日英2言語で市場価格が大きく違う実例を示し、買い手が見積もり相談をしたくなる理由を作る",
+      "note": "trial-001の目的（需要と買う理由を示す）を、価格比べの形で具体化したもの。",
+      "source_ids": [
+        "S8",
+        "S2"
+      ]
+    },
+    "primary_action": {
+      "note": "引き継ぎ前提の仮案。特定店のDM対応の実態は未確認。共通試作では実在の相談先を補わない。",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "proposed",
+      "value": "商品名・希望枚数・届け先の国をDMし、価格・状態・在庫・送料の確認へつなぐ"
+    },
+    "product_scope": {
+      "status": "confirmed",
+      "value": "ブラッキーex SAR 217/187（SV8a）と英語版 Umbreon ex SIR 161/131（Prismatic Evolutions）。同一絵柄（Illus. YASHIRO Nanaco）、未鑑定シングル",
+      "note": "trial-001の需要調査で、日英の価格帯の差が最も明確（英語版インデックスの約25%）と確認された候補。価格は制作直前に同一覧ページで取り直した（S9）。",
+      "source_ids": [
+        "S9",
+        "S2"
+      ]
+    },
+    "project": {
+      "status": "confirmed",
+      "value": "共通試作 trial-002：REF-001型（日英価格比べ）の再現検証。trial-001と同じ共通試作の2企画目で、特定店の広告ではない",
+      "note": "利用者が次の試作としてREF-001型を明示決定。trial-001の前提（共通試作・特定店の条件を混ぜない）を引き継ぐ。",
+      "source_ids": [
+        "S8",
+        "S2"
+      ]
+    },
+    "reference": {
+      "status": "confirmed",
+      "value": "REF-001（価格比べ型）。1枚目がフック、2〜4枚目はREF-003と同一の共通クロージングで、trial-001制作済みの自社版を流用する",
+      "note": "参考分析でREF-001の2〜4枚目がREF-003と同一ファイルであることを確認済み。量産パターン（フックだけ替え、後半は共通）の再現検証を兼ねる。",
+      "source_ids": [
+        "S8",
+        "S7"
+      ]
+    },
+    "sales_terms": {
+      "note": "在庫・売価・数量・送料・発送は共通試作に補わない。記載が必要になる条件は原稿確定前に確認する。",
+      "resolve_at_stage": 3,
+      "source_ids": [],
+      "status": "deferred",
+      "value": null
+    }
+  },
+  "constraints": [
+    {
+      "source_ids": [
+        "S1",
+        "S4"
+      ],
+      "text": "投稿はまだ行わない。外部への送信・共有・投稿は依頼された範囲のみ"
+    },
+    {
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "text": "鈴木さんの投稿管理スプレッドシートと、その保存済み台帳コピーは閲覧・編集しない。河合さん専用の参考リール再現は別案件として触らない"
+    },
+    {
+      "source_ids": [
+        "S2"
+      ],
+      "text": "共通試作に特定店の在庫・売価・送料・発送・DM対応実績を補わない"
+    },
+    {
+      "source_ids": [
+        "S4"
+      ],
+      "text": "この案件ではブラウザーUI操作を使わない。通常のWeb検索・公開ページ取得・ローカルファイルで進める"
+    },
+    {
+      "source_ids": [
+        "S3",
+        "S4"
+      ],
+      "text": "作成者だけが使える外部収集サービスへの依存を戻さない。API契約やキーの用意を最初の作業にしない"
+    },
+    {
+      "source_ids": [
+        "S4",
+        "S5"
+      ],
+      "text": "再生数（注目）と購買需要を混同しない。別の取得環境で得た市場データを、Muse環境で検証できた根拠として採用しない。取得できない数値は0にしない"
+    },
+    {
+      "source_ids": [
+        "S4",
+        "S6"
+      ],
+      "text": "商品画像の絵柄・番号・言語を生成で変えない。AI映像を本物の在庫のように見せない"
+    }
+  ],
+  "execution_mode": "step_by_step",
+  "handoff": {
+    "instructions": "第2工程（需要調査）はtrial-001の調査記録を根拠に完了済みとして扱い、価格はS9で固定した。次工程は制作仕様と制作（1枚目の実測再現＋2〜4枚目の流用）。投稿はしない。",
+    "next_stage": 2,
+    "ready_for_selection": true,
+    "stop_after_this_stage": true
+  },
+  "open_questions": [
+    {
+      "question": "元の見出し書体の特定",
+      "status": "deferred",
+      "resolve_at": "制作時に未特定なら近似として記録する",
+      "source_ids": [
+        "S8"
+      ]
+    },
+    {
+      "question": "管理表・投稿先の設定",
+      "status": "deferred",
+      "resolve_at": "連携工程（本試作では投稿しない）",
+      "source_ids": [
+        "S8"
+      ]
+    }
+  ],
+  "recorded_on": "2026-11-13",
+  "rejected_candidates": [
+    {
+      "source_ids": [
+        "S5"
+      ],
+      "text": "ゲンガーex・ピカチュウex・コイキングの以前の比較案は確定企画にしない。市場・状態・費用条件を新しい標準手順で確認する"
+    },
+    {
+      "source_ids": [
+        "S2"
+      ],
+      "text": "コダック175/165等の過去に不評だった題材へ戻す場合も、需要と具体的な買う理由を新しい根拠で確認してからにする"
+    }
+  ],
+  "resource_access": [
+    {
+      "note": "読み取りは2026-11-13に実証済み。変更と検査結果はこのリポジトリに残す決め。書き込みは変更時に実証する。",
+      "read": true,
+      "resource": "GitHub naoki-GPT/tcg-social-studio",
+      "source_ids": [
+        "S3"
+      ],
+      "write": true
+    },
+    {
+      "note": "閲覧・編集とも禁止。別の接続方法や保存済みコピーで迂回しない。",
+      "read": false,
+      "resource": "鈴木さんの投稿管理スプレッドシート・保存済み台帳コピー",
+      "source_ids": [
+        "S4"
+      ],
+      "write": false
+    },
+    {
+      "note": "2026-11-13に2つのZIPで受領し展開。全12件・メディア32ファイル（画像27枚＋動画5本）がASSET_MANIFESTのSHA256と全件一致（ズレ0・欠落0）。動画5本の長さと音声の有無も記録と一致。",
+      "read": true,
+      "resource": "参考原本ZIP（muse-reference-assets_20261113_with-captions.zip）",
+      "source_ids": [
+        "S7"
+      ],
+      "write": false
+    },
+    {
+      "note": "前提記録と検査結果の置き場。案件メディアはGit管理外で扱う。",
+      "read": true,
+      "resource": "Claudeのローカル制作フォルダ（~/workspace/tcg-social-studio/trial-001）",
+      "source_ids": [
+        "S3"
+      ],
+      "write": true
+    }
+  ],
+  "schema_version": "1.0",
+  "sources": [
+    {
+      "checked_on": "2026-11-13",
+      "excerpt": "最新版のMUSE_START_HERE.mdとCOMMON_TRIAL_BRIEF.mdを読み、既存の前提を引き継いで目的設計・需要調査から進めてください。投稿はまだ行わないでください。",
+      "id": "S1",
+      "kind": "conversation",
+      "locator": "メインチャット 2026-11-13 11:37 JST の利用者指示"
+    },
+    {
+      "checked_on": "2026-11-13",
+      "excerpt": "決まっていること：鈴木さん・河合さんの両方に使える制作フローの共通試作を1企画だけ作る。仮案：客＝日本語版ポケモンカードを補充・再販する小規模カード店・ネット販売者、市場＝米国の英語圏市場、商品範囲＝日本語版・未鑑定のシングル、主な行動＝商品名・希望枚数・届け先の国をDMし確認へつなぐ、本文＝英語と確認用の全文日本語訳。",
+      "id": "S2",
+      "kind": "repository_doc",
+      "locator": "naoki-GPT/tcg-social-studio docs/COMMON_TRIAL_BRIEF.md（2026-11-13）"
+    },
+    {
+      "checked_on": "2026-11-13",
+      "excerpt": "目的設計 → 直近の参考調査 → MuseからCodexへ制作依頼 → 管理表へ反映 → 人間の承認 → Museによる投稿。管理表と投稿先は未設定。変更と検査結果はこのリポジトリに残す。",
+      "id": "S3",
+      "kind": "repository_doc",
+      "locator": "naoki-GPT/tcg-social-studio MUSE_START_HERE.md（最新版、2026-11-13）"
+    },
+    {
+      "checked_on": "2026-11-13",
+      "excerpt": "この案件ではブラウザーUI操作を使わない。通常のWeb検索・公開ページ取得・ローカルファイルで進める。鈴木さんの投稿管理スプレッドシートと保存済み台帳コピーは閲覧・編集しない。河合さん専用の参考リール再現は別案件。",
+      "id": "S4",
+      "kind": "repository_doc",
+      "locator": "naoki-GPT/tcg-social-studio AGENTS.md（2026-11-13引き継ぎ方針）"
+    },
+    {
+      "checked_on": "2026-11-13",
+      "excerpt": "第2工程の草案は未完成で検査も書きかけ。2026-11-13のゲンガーex・ピカチュウex・コイキングの比較は確定企画にしない。参考画像・動画の全原本、書体ファイル、利用者の商品素材は同梱されていない。",
+      "id": "S5",
+      "kind": "repository_doc",
+      "locator": "naoki-GPT/tcg-social-studio docs/KNOWN_ISSUES.md（2026-11-13）"
+    },
+    {
+      "checked_on": "2026-11-13",
+      "excerpt": "ゴールはフォロワー数ではなく値段と在庫を聞く見積もりDM。相手は海外のTCGショップと転売・再販目的の買い手（ライブ販売者を含む）。言葉は英語が基本。やらないことは根拠のない「No.1／最安」表現、在庫未確認での断定、AI映像を本物の在庫に見せること。",
+      "id": "S6",
+      "kind": "local_doc",
+      "locator": "利用者の事業設計メモ（2026-11-01確定）~/workspace/goals/pok-mon-card-overseas-resale-launch/files/design-memo-goal-persona.md"
+    },
+    {
+      "checked_on": "2026-11-13",
+      "excerpt": "参考原本ZIP muse-reference-assets_20261113_with-captions.zip（31,763,400 bytes、SHA256 dd2439d9752d91c51f0f19ca00b23e4ee79abd5851d75d2be8ec5861f5be32d0、参考12件・画像27枚・動画5本・本文12件）を作成・検証済み。Museでの受領・展開はまだ確認していない。2026-11-13にClaude環境内を検索したが未着だった。",
+      "id": "S7",
+      "kind": "repository_doc",
+      "locator": "naoki-GPT/tcg-social-studio docs/REFERENCE_ASSETS.md（2026-11-13）"
+    },
+    {
+      "id": "S8",
+      "kind": "conversation",
+      "locator": "メインチャット 2026-11-13 17:45 JST の利用者決定",
+      "excerpt": "次の試作はREF-001型（価格比べ）",
+      "checked_on": "2026-11-13"
+    },
+    {
+      "id": "S9",
+      "kind": "price_check",
+      "locator": "PriceCharting Umbreon一覧ページ（2026-11-13 08:46 UTC取得）",
+      "excerpt": "Umbreon ex #161 Pokemon Prismatic Evolutions Ungraded $1,056.48／Umbreon Ex #217 Pokemon Japanese Terastal Festival Ungraded $265.41。同一ページ・同時取得の未鑑定インデックス。為替1ドル=159.8円で換算：英語版¥168,830、日本語版¥42,410",
+      "checked_on": "2026-11-13"
+    }
+  ],
+  "stage": 1
+}
