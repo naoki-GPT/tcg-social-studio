@@ -1,0 +1,76 @@
+{
+  "draft": false,
+  "brand": "TRIAL",
+  "texts": {
+    "h1": "POKÉMON CARD GAME",
+    "h2": "Japanese Singles",
+    "h3": "SAR & AR Market Prices",
+    "fx": "1 USD = ¥159.8 (as of November 13)",
+    "date": "Prices as of November 13",
+    "why": "WHY THESE FOUR",
+    "quote": "WHAT YOUR QUOTE INCLUDES",
+    "cta_title": "INTERESTED? SEND US A DM!",
+    "cta": "DM \"SAR LIST\" with: the card names / the quantities / your country",
+    "reply": "We reply with price, condition and shipping for each card.",
+    "foot": "Common trial mock — shop name and terms are set per shop before real use.",
+    "why0": "Mew ex SAR — 30 recorded eBay sales, Sep 29 – Nov 6. The fastest turnover in this list.",
+    "why1": "Umbreon ex SAR — English SIR trades around $1,187. The Japanese SAR index is $277.02: the same artwork at a lower entry point.",
+    "why2": "Pikachu ex SAR — About 18 recorded sales in the last 7 weeks.",
+    "why3": "Psyduck AR — A low-priced AR with steady turnover. An easy add for live-sale mixes.",
+    "quote0": "The exact card and collector number",
+    "quote1": "Condition stated before payment — no surprises",
+    "quote2": "Packing: sleeve + rigid holder, protected for international shipping",
+    "quote3": "Shipping quoted to your country (DHL / FedEx / EMS)"
+  },
+  "products": [
+    {
+      "name": "ミュウex SAR 205/165（SV2a）",
+      "image": "products/mew_ex_sar_sv2a.jpg",
+      "jpy": "¥29,160",
+      "usd": "$182.50",
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "ブラッキーex SAR 217/187（SV8a）",
+      "image": "products/umbreon_ex_sar_sv8a.jpg",
+      "jpy": "¥44,270",
+      "usd": "$277.02",
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "ピカチュウex SAR 132/106（SV8）",
+      "image": "products/pikachu_ex_sar_sv8.jpg",
+      "jpy": "¥37,470",
+      "usd": "$234.50",
+      "crop": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "コダック AR 175/165（SV2a）",
+      "image": "products/psyduck_ar_sv2a.webp",
+      "jpy": "¥3,040",
+      "usd": "$19.00",
+      "crop": [
+        0.205607476635514,
+        0.09345794392523364,
+        0.5887850467289719,
+        0.8130841121495327
+      ]
+    }
+  ],
+  "price_provenance": "依頼者固定値。全種PriceCharting未鑑定インデックス（eBay成約ベース、2026-11-13取得）、USD×159.8、10円単位四捨五入。新規調査・価格変更なし。"
+}
