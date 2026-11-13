@@ -1,0 +1,14 @@
+{
+  "record_valid": true,
+  "ready_for_selection": true,
+  "continue_now": false,
+  "errors": [],
+  "blockers": [],
+  "assumptions": [
+    "audience",
+    "market",
+    "primary_action",
+    "copy_language"
+  ],
+  "scope": "記録の構造・根拠参照・引き渡し条件のみ。真偽・アクセス履歴・制作品質は人による照合が必要。"
+}
