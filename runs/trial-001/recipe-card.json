@@ -1,0 +1,401 @@
+{
+  "schema": "tcg-recipe-card/1",
+  "is_example": false,
+  "card_id": "RC-REF-003-TRIAL-001",
+  "kind": "slideshow",
+  "reference": {
+    "ref_id": "REF-003",
+    "url": "file:///home/hatch/workspace/tcg-social-studio/reference-assets/muse-reference-assets/references/REF-003",
+    "observed_at": "2026-11-13",
+    "observed_scope": "原本01〜04.jpg全4枚を開いて目視",
+    "local_files": [
+      "reference/01.jpg",
+      "reference/02.jpg",
+      "reference/03.jpg",
+      "reference/04.jpg"
+    ]
+  },
+  "canvas": {
+    "ratio": "4:5"
+  },
+  "palette": {
+    "background": "#06162D",
+    "primary_text": "#FFFFFF",
+    "accent": "#DAB254",
+    "outline": "#081B34",
+    "panel": "#F8F6F0"
+  },
+  "background": {
+    "type": "gradient",
+    "value": "linear-gradient(135deg,#3981c0,#eff7fc,#1a599a)",
+    "notes": "ページ1空色と金の光、ページ2濃紺、ページ3〜4白地"
+  },
+  "typography": {
+    "headline": {
+      "family": "DejaVu Serif",
+      "fallback": "Impact, Arial Black, sans-serif",
+      "weight": 900,
+      "italic": false,
+      "size_px": 64,
+      "letter_spacing_px": 0,
+      "line_height": 1.05,
+      "case": "upper",
+      "match": "approx",
+      "approx_note": "原書体未特定。セリフ大見出しと太字サンセリフをローカル書体で近似。"
+    },
+    "body": {
+      "family": "DejaVu Sans",
+      "fallback": "Helvetica, sans-serif",
+      "weight": 700,
+      "italic": false,
+      "size_px": 37,
+      "letter_spacing_px": 0,
+      "line_height": 1.25,
+      "case": "none",
+      "match": "approx",
+      "approx_note": "原書体未特定。セリフ大見出しと太字サンセリフをローカル書体で近似。"
+    }
+  },
+  "outline": {
+    "width_px": 0,
+    "color": "#0A0F22",
+    "shadow": "0 6px 18px rgba(0,0,0,.45)"
+  },
+  "product": {
+    "area_pct": 30,
+    "box": {
+      "x": 0.14,
+      "y": 0.25,
+      "w": 0.27,
+      "h": 0.28
+    },
+    "angle_deg": 0,
+    "shadow": "0 30px 60px rgba(0,0,0,.5)"
+  },
+  "text_zones": {
+    "headline": {
+      "x": 0.07,
+      "y": 0.06,
+      "w": 0.86,
+      "h": 0.2,
+      "align": "left"
+    },
+    "sub": {
+      "x": 0.62,
+      "y": 0.36,
+      "w": 0.32,
+      "h": 0.4,
+      "align": "left"
+    },
+    "badge": {
+      "x": 0.62,
+      "y": 0.78,
+      "w": 0.32,
+      "h": 0.1,
+      "align": "center"
+    },
+    "cta": {
+      "x": 0.07,
+      "y": 0.8,
+      "w": 0.86,
+      "h": 0.14,
+      "align": "center"
+    }
+  },
+  "slide_count": 4,
+  "slides": [
+    {
+      "index": 1,
+      "role": "compare",
+      "observed": "12種価格表を指定の4種2×2へ置換",
+      "layers": [
+        {
+          "element": "text",
+          "slot": "h1",
+          "style": "headline",
+          "zone": {
+            "x": 0.055556,
+            "y": 0.018519,
+            "w": 0.888889,
+            "h": 0.022963
+          }
+        },
+        {
+          "element": "text",
+          "slot": "h2",
+          "style": "headline",
+          "zone": {
+            "x": 0.055556,
+            "y": 0.047407,
+            "w": 0.888889,
+            "h": 0.076262
+          }
+        },
+        {
+          "element": "text",
+          "slot": "h3",
+          "style": "headline",
+          "zone": {
+            "x": 0.055556,
+            "y": 0.133299,
+            "w": 0.888889,
+            "h": 0.06963
+          }
+        },
+        {
+          "element": "product",
+          "product": 0,
+          "zone": {
+            "x": 0.17037,
+            "y": 0.247407,
+            "w": 0.2074074074074074,
+            "h": 0.2311111111111111
+          }
+        },
+        {
+          "element": "product",
+          "product": 1,
+          "zone": {
+            "x": 0.621296,
+            "y": 0.247407,
+            "w": 0.2074074074074074,
+            "h": 0.2311111111111111
+          }
+        },
+        {
+          "element": "product",
+          "product": 2,
+          "zone": {
+            "x": 0.17037,
+            "y": 0.593333,
+            "w": 0.2074074074074074,
+            "h": 0.2311111111111111
+          }
+        },
+        {
+          "element": "product",
+          "product": 3,
+          "zone": {
+            "x": 0.621296,
+            "y": 0.593333,
+            "w": 0.2074074074074074,
+            "h": 0.2311111111111111
+          }
+        },
+        {
+          "element": "text",
+          "slot": "fx",
+          "style": "sub",
+          "zone": {
+            "x": 0.041667,
+            "y": 0.947407,
+            "w": 0.426953,
+            "h": 0.034815
+          }
+        },
+        {
+          "element": "text",
+          "slot": "date",
+          "style": "sub",
+          "zone": {
+            "x": 0.654774,
+            "y": 0.947407,
+            "w": 0.303559,
+            "h": 0.034815
+          }
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "role": "proof",
+      "observed": "発送実績を選定根拠へ置換",
+      "layers": [
+        {
+          "element": "text",
+          "slot": "why",
+          "style": "headline",
+          "zone": {
+            "x": 0.07037,
+            "y": 0.048889,
+            "w": 0.859259,
+            "h": 0.070069
+          }
+        },
+        {
+          "element": "text",
+          "slot": "why0",
+          "style": "sub",
+          "zone": {
+            "x": 0.144444,
+            "y": 0.195995,
+            "w": 0.762963,
+            "h": 0.065995
+          }
+        },
+        {
+          "element": "text",
+          "slot": "why1",
+          "style": "sub",
+          "zone": {
+            "x": 0.144444,
+            "y": 0.347106,
+            "w": 0.762963,
+            "h": 0.098993
+          }
+        },
+        {
+          "element": "text",
+          "slot": "why2",
+          "style": "sub",
+          "zone": {
+            "x": 0.144444,
+            "y": 0.561921,
+            "w": 0.762963,
+            "h": 0.065995
+          }
+        },
+        {
+          "element": "text",
+          "slot": "why3",
+          "style": "sub",
+          "zone": {
+            "x": 0.144444,
+            "y": 0.713032,
+            "w": 0.762963,
+            "h": 0.065995
+          }
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "role": "benefit",
+      "observed": "品ぞろえを見積項目へ置換",
+      "layers": [
+        {
+          "element": "text",
+          "slot": "quote",
+          "style": "headline",
+          "zone": {
+            "x": 0.07037,
+            "y": 0.048889,
+            "w": 0.859259,
+            "h": 0.107546
+          }
+        },
+        {
+          "element": "text",
+          "slot": "quote0",
+          "style": "sub",
+          "zone": {
+            "x": 0.162963,
+            "y": 0.248287,
+            "w": 0.744444,
+            "h": 0.038993
+          }
+        },
+        {
+          "element": "text",
+          "slot": "quote1",
+          "style": "sub",
+          "zone": {
+            "x": 0.162963,
+            "y": 0.40162,
+            "w": 0.744444,
+            "h": 0.077986
+          }
+        },
+        {
+          "element": "text",
+          "slot": "quote2",
+          "style": "sub",
+          "zone": {
+            "x": 0.162963,
+            "y": 0.554954,
+            "w": 0.744444,
+            "h": 0.077986
+          }
+        },
+        {
+          "element": "text",
+          "slot": "quote3",
+          "style": "sub",
+          "zone": {
+            "x": 0.162963,
+            "y": 0.708287,
+            "w": 0.744444,
+            "h": 0.077986
+          }
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "role": "cta",
+      "observed": "注文条件を指定DM案内へ置換",
+      "layers": [
+        {
+          "element": "text",
+          "slot": "cta_title",
+          "style": "headline",
+          "zone": {
+            "x": 0.07037,
+            "y": 0.094815,
+            "w": 0.859259,
+            "h": 0.107546
+          }
+        },
+        {
+          "element": "text",
+          "slot": "cta",
+          "style": "cta",
+          "zone": {
+            "x": 0.118519,
+            "y": 0.334213,
+            "w": 0.762963,
+            "h": 0.143993
+          }
+        },
+        {
+          "element": "text",
+          "slot": "reply",
+          "style": "sub",
+          "zone": {
+            "x": 0.094444,
+            "y": 0.558947,
+            "w": 0.811111,
+            "h": 0.087106
+          }
+        },
+        {
+          "element": "text",
+          "slot": "foot",
+          "style": "sub",
+          "zone": {
+            "x": 0.092593,
+            "y": 0.831713,
+            "w": 0.814815,
+            "h": 0.049769
+          }
+        }
+      ]
+    }
+  ],
+  "cta_placement": [
+    "last-slide",
+    "caption"
+  ],
+  "differences": {
+    "intentional": [
+      "12商品を指定4商品2段×2列に変更",
+      "商品・価格・日付・見出しを固定原稿へ置換",
+      "元店名・ロゴ・実績・条件を除外しTRIALと指定の根拠／見積項目／DM案内へ置換"
+    ],
+    "unreproduced": [
+      "原書体未特定：全ページapprox（ローカルDejaVu系）",
+      "ページ1の立体金リボン・光粒子・ボールはCSSによる平面的な装飾へ近似。完全一致ではない"
+    ]
+  },
+  "implementation": "trial-template.html：指定ビルダーの欠落テンプレートをローカルで補完。production/index.htmlが編集元。"
+}
