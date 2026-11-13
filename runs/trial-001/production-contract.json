@@ -1,0 +1,105 @@
+{
+  "version": "2.0",
+  "mode": "prototype",
+  "created_at": "2026-11-13T04:49:12.544163+00:00",
+  "objective": {
+    "audience": "海外店舗・再販者",
+    "product": "指定の日本語SAR・AR 4種",
+    "benefit": "成約根拠付き市場価格と見積内容の一覧",
+    "why_now": "依頼固定の11月13日更新",
+    "action": "カード名・数量・国をDM",
+    "destination": "各店設定前の共通試作。実アカウント未指定",
+    "cta_text": "Sourcing Japanese singles for your shop? DM \"SAR LIST\" with the card names, quantities and your country — every quote includes condition and shipping.",
+    "caption_file": "05_caption.md"
+  },
+  "selection": {
+    "decision": "adopt",
+    "reason": "固定制作依頼の4商品を採用",
+    "goal": "市場価格→根拠→見積内容→DMの共通試作",
+    "alternatives_file": "02_demand_research_notes.md",
+    "review_file": "selection-review.json",
+    "max_age_days": 7,
+    "evidence": [],
+    "evidence_note": "固定依頼と既存需要調査を入力として保持。販売用gateに必要な独立検証済み成約レコードは今回作成しない"
+  },
+  "price_claim": {
+    "required": false,
+    "reason": "固定原稿の市場インデックス・日英比較を表示。独立検証した販売提案・利益優位の合格は宣言しない",
+    "record_file": "codex_brief_production.md"
+  },
+  "reference": {
+    "kind": "carousel",
+    "expected_count": 4,
+    "media": [
+      {
+        "position": 1,
+        "file": "reference/01.jpg",
+        "sha256": "a65270281257a0bf25fc2da4a476d991c495604ba38e138fbcbd2bb150fa08ae"
+      },
+      {
+        "position": 2,
+        "file": "reference/02.jpg",
+        "sha256": "cb5e45661e729f4ad707cea9deb63ed2fab0211c91f7328089c7fbd9c1c5d910"
+      },
+      {
+        "position": 3,
+        "file": "reference/03.jpg",
+        "sha256": "7a5bed08811dcc07f2b83749ff3c599ba3bb4ec037f4028d4c0115a88e701306"
+      },
+      {
+        "position": 4,
+        "file": "reference/04.jpg",
+        "sha256": "75dec4c52b727704044872ba5eff687c6694e00f0f7181837dc5eee5e2a72aff"
+      }
+    ],
+    "breakdown_file": "reference-breakdown.json",
+    "full_review_file": "production/visual-review.md"
+  },
+  "outputs": [
+    {
+      "reference_position": 1,
+      "file": "production/slides/01.png",
+      "sha256": "6285270d0431ef0f065f8eda43895aaead1c4c16f6b39d5cb73fc1b7a795d722",
+      "width": 1080,
+      "height": 1350
+    },
+    {
+      "reference_position": 2,
+      "file": "production/slides/02.png",
+      "sha256": "3c9bdcf64c99bd99ef7d322698f75328dc5ceea676f7d1ad07d133aae14b25d8",
+      "width": 1080,
+      "height": 1350
+    },
+    {
+      "reference_position": 3,
+      "file": "production/slides/03.png",
+      "sha256": "1c96412f22a5487103d1269992f2f751fcb6a8e2923a577d2dea3a21c03d5c89",
+      "width": 1080,
+      "height": 1350
+    },
+    {
+      "reference_position": 4,
+      "file": "production/slides/04.png",
+      "sha256": "9ebc6934d711b0d1ec038b3f529056dbecadb5344d79cd8238bc550c266761c1",
+      "width": 1080,
+      "height": 1350
+    }
+  ],
+  "qa": {
+    "visual_result": "pass",
+    "visual_scope": "固定原稿の可読性・画像同一性。完全再現は未達",
+    "paired_review_file": "compare/compare_notes.md",
+    "full_visual_review_file": "production/visual-review.md",
+    "technical_result": "pass",
+    "technical_report_file": "production/technical-check.json",
+    "unresolved_differences": [
+      "原書体未特定：全ページapprox（ローカルDejaVu系）",
+      "ページ1の立体金リボン・光粒子・ボールはCSSによる平面的な装飾へ近似。完全一致ではない"
+    ],
+    "intentional_differences": [
+      "12商品を指定4商品2段×2列に変更",
+      "商品・価格・日付・見出しを固定原稿へ置換",
+      "元店名・ロゴ・実績・条件を除外しTRIALと指定の根拠／見積項目／DM案内へ置換"
+    ]
+  }
+}
