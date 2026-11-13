@@ -1,0 +1,32 @@
+# ローカル環境と秘密情報
+.venv/
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.pem
+*.key
+credentials*.json
+*token*.json
+*.p12
+*.pfx
+.codex/
+.agents/
+.DS_Store
+Thumbs.db
+
+# 案件の素材・根拠・完成物はソースから分ける
+/runs/
+/outputs/
+/private/
+/downloads/
+/local/
+*.mp4
+*.mov
+*.wav
+*.mp3
+*.zip
+
+# 実行時の記録
+*.log

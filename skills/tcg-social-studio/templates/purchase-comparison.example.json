@@ -1,0 +1,13 @@
+{
+  "sample": true,
+  "axis": "language_editions",
+  "claim": "cheaper",
+  "identity_and_condition": "",
+  "currency_and_unit": "",
+  "price_basis": "",
+  "left": {"label": "比較基準：英語版など", "amount": null, "record_file": ""},
+  "right": {"label": "提案条件：日本語版など", "amount": null, "record_file": ""},
+  "costs_and_limitations": "",
+  "buyer_advantage_reason": "",
+  "note": "同一通貨・1枚/1BOX等の同一単位へ換算する。言語間の市場価格差は転売利益ではない。same_item_timeは左=以前、右=現在。新作の需要と価格差は別々に検証する。"
+}

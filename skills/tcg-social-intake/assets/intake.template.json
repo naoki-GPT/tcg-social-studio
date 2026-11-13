@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "stage": 1,
+  "recorded_on": "YYYY-MM-DD",
+  "execution_mode": "step_by_step",
+  "sources": [],
+  "brief": {
+    "project": {"status": "unknown", "value": null, "source_ids": [], "note": "対象案件、共通試作か実店舗用かを確認"},
+    "audience": {"status": "unknown", "value": null, "source_ids": [], "note": "誰の何の購入用途か"},
+    "market": {"status": "unknown", "value": null, "source_ids": [], "note": "需要を調べる国・市場"},
+    "objective": {"status": "unknown", "value": null, "source_ids": [], "note": "この投稿で変えたい買い手の判断"},
+    "primary_action": {"status": "unknown", "value": null, "source_ids": [], "note": "DM、商品ページ閲覧など主な行動を1つ"},
+    "concept_count": {"status": "unknown", "value": null, "source_ids": [], "note": "明示された企画数。枚数と区別する"},
+    "product_scope": {"status": "unknown", "value": null, "source_ids": [], "note": "候補を調べる商品範囲。売れ筋の結論は次工程"},
+    "media_format": {"status": "deferred", "value": null, "source_ids": [], "note": "媒体と形式。参考全体を確認して枚数・尺を決める", "resolve_at_stage": 4},
+    "copy_language": {"status": "unknown", "value": null, "source_ids": [], "note": "本文言語と確認用の訳"},
+    "destination": {"status": "deferred", "value": null, "source_ids": [], "note": "実在の相談先・商品ページは原稿確定前に照合", "resolve_at_stage": 3},
+    "reference": {"status": "deferred", "value": null, "source_ids": [], "note": "参考IDを元投稿と照合し、全枚・全編の取得へ渡す", "resolve_at_stage": 4},
+    "sales_terms": {"status": "deferred", "value": null, "source_ids": [], "note": "在庫・売価・数量・送料・発送。記載する条件は原稿確定前に確認", "resolve_at_stage": 3}
+  },
+  "constraints": [],
+  "resource_access": [],
+  "rejected_candidates": [],
+  "open_questions": [],
+  "handoff": {
+    "next_stage": 2,
+    "ready_for_selection": false,
+    "stop_after_this_stage": true,
+    "instructions": "未確認の必須条件を埋めてから対象客・市場の需要を調べる。"
+  }
+}

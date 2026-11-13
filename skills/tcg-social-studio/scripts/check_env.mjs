@@ -1,0 +1,3 @@
+// v1: 設定の読み取りとffmpegのバージョン確認のみ。生成・ネット接続なし。
+import {existsSync} from 'node:fs';import {spawnSync} from 'node:child_process';import {dependencies,browserOptions} from './runtime.mjs';
+try{const {chromium,ffmpeg}=dependencies();const browser=browserOptions().executablePath||chromium.executablePath();const v=spawnSync(ffmpeg,['-version'],{encoding:'utf8',windowsHide:true});const r={node:process.version,browser_found:existsSync(browser),ffmpeg_ok:v.status===0,render_tested:false};console.log(JSON.stringify(r));if(!r.browser_found||!r.ffmpeg_ok)process.exitCode=1;}catch(e){console.error('[ERROR]',e.message);process.exitCode=1;}

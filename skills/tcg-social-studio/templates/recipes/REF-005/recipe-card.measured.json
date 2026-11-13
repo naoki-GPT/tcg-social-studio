@@ -1,0 +1,240 @@
+{
+  "schema": "tcg-recipe-card/1",
+  "is_example": false,
+  "_note": "例（架空値）。実在の参考を観察した値ではない。台帳の参考1件ごとに、このファイルを複製して実測値で書き直す。is_example:true のままでは納品検査に通らない。",
+  "card_id": "RC-EXAMPLE-SLIDE-01-v1",
+  "kind": "slideshow",
+  "reference": {
+    "ref_id": "REF-005",
+    "url": "https://www.instagram.com/p/DdjbR4qjaUb/",
+    "observed_scope": "All 9 images, observed 2026-11-12; original font and background icons unresolved",
+    "observed_at": "2026-11-12T14:06:48.723389+00:00"
+  },
+  "canvas": {
+    "ratio": "custom",
+    "width": 1088,
+    "height": 1344
+  },
+  "palette": {
+    "background": "#080c24",
+    "primary_text": "#ffffff",
+    "accent": "#e0c57c",
+    "outline": "#0A0F22",
+    "panel": "#16244F"
+  },
+  "background": {
+    "type": "gradient",
+    "value": "linear-gradient(160deg,#0E1A3A 0%,#16244F 60%,#0A0F22 100%)",
+    "notes": "例：濃紺の斜めグラデーション"
+  },
+  "typography": {
+    "headline": {
+      "family": "Arial",
+      "fallback": "Impact, Arial Black, sans-serif",
+      "weight": 700,
+      "italic": false,
+      "size_px": 58,
+      "letter_spacing_px": 0,
+      "line_height": 1.05,
+      "case": "upper",
+      "match": "approx",
+      "approx_note": "Original font identity unconfirmed; compare against source before acceptance"
+    },
+    "body": {
+      "family": "Arial",
+      "fallback": "Helvetica, sans-serif",
+      "weight": 700,
+      "italic": false,
+      "size_px": 18,
+      "letter_spacing_px": 0,
+      "line_height": 1.25,
+      "case": "none",
+      "match": "approx",
+      "approx_note": "Original font identity unconfirmed"
+    }
+  },
+  "outline": {
+    "width_px": 0,
+    "color": "#0A0F22",
+    "shadow": "0 6px 18px rgba(0,0,0,.45)"
+  },
+  "product": {
+    "area_pct": 12.61,
+    "box": {
+      "x": 0.0846,
+      "y": 0.158,
+      "w": 0.3355,
+      "h": 0.3757
+    },
+    "angle_deg": -4,
+    "shadow": "0 30px 60px rgba(0,0,0,.5)"
+  },
+  "text_zones": {
+    "headline": {
+      "x": 0.498,
+      "y": 0.151,
+      "w": 0.455,
+      "h": 0.08
+    }
+  },
+  "slide_count": 9,
+  "slides": [
+    {
+      "role": "compare",
+      "layers": [
+        {
+          "element": "product",
+          "product": 0,
+          "effect": "cut"
+        },
+        {
+          "element": "text",
+          "style": "headline",
+          "slot": "name0",
+          "effect": "cut"
+        }
+      ]
+    },
+    {
+      "role": "compare",
+      "layers": [
+        {
+          "element": "product",
+          "product": 1,
+          "effect": "cut"
+        },
+        {
+          "element": "text",
+          "style": "headline",
+          "slot": "name1",
+          "effect": "cut"
+        }
+      ]
+    },
+    {
+      "role": "compare",
+      "layers": [
+        {
+          "element": "product",
+          "product": 2,
+          "effect": "cut"
+        },
+        {
+          "element": "text",
+          "style": "headline",
+          "slot": "name2",
+          "effect": "cut"
+        }
+      ]
+    },
+    {
+      "role": "compare",
+      "layers": [
+        {
+          "element": "product",
+          "product": 3,
+          "effect": "cut"
+        },
+        {
+          "element": "text",
+          "style": "headline",
+          "slot": "name3",
+          "effect": "cut"
+        }
+      ]
+    },
+    {
+      "role": "compare",
+      "layers": [
+        {
+          "element": "product",
+          "product": 4,
+          "effect": "cut"
+        },
+        {
+          "element": "text",
+          "style": "headline",
+          "slot": "name4",
+          "effect": "cut"
+        }
+      ]
+    },
+    {
+      "role": "compare",
+      "layers": [
+        {
+          "element": "product",
+          "product": 5,
+          "effect": "cut"
+        },
+        {
+          "element": "text",
+          "style": "headline",
+          "slot": "name5",
+          "effect": "cut"
+        }
+      ]
+    },
+    {
+      "role": "compare",
+      "layers": [
+        {
+          "element": "product",
+          "product": 6,
+          "effect": "cut"
+        },
+        {
+          "element": "text",
+          "style": "headline",
+          "slot": "name6",
+          "effect": "cut"
+        }
+      ]
+    },
+    {
+      "role": "compare",
+      "layers": [
+        {
+          "element": "product",
+          "product": 7,
+          "effect": "cut"
+        },
+        {
+          "element": "text",
+          "style": "headline",
+          "slot": "name7",
+          "effect": "cut"
+        }
+      ]
+    },
+    {
+      "role": "compare",
+      "layers": [
+        {
+          "element": "product",
+          "product": 8,
+          "effect": "cut"
+        },
+        {
+          "element": "text",
+          "style": "headline",
+          "slot": "name8",
+          "effect": "cut"
+        }
+      ]
+    }
+  ],
+  "cta_placement": [
+    "caption"
+  ],
+  "differences": {
+    "intentional": [
+      "Own product photos, brand and verified offer replace competitor identities"
+    ],
+    "unreproduced": [
+      "Original font unconfirmed",
+      "Background icon pattern not reproduced; dedicated template is a measured starting point",
+      "Fine typography and graph geometry require all-page side-by-side review"
+    ]
+  }
+}

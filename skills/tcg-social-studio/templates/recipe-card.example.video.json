@@ -1,0 +1,217 @@
+{
+  "schema": "tcg-recipe-card/1",
+  "is_example": true,
+  "_note": "例（架空値）。実在の参考を観察した値ではない。参考動画を0.5秒刻みで見て、timelineを実測で書き直す。is_example:true のままでは納品検査に通らない。",
+  "card_id": "RC-EXAMPLE-VIDEO-01-v1",
+  "kind": "video",
+  "reference": {
+    "ref_id": "EXAMPLE-VIDEO-01",
+    "ledger": "design",
+    "url": "https://example.com/reel/example-video-01",
+    "observed_at": "2026-11-12",
+    "observed_scope": "例：全編を再生し、0〜3秒は0.25秒刻みでコマを確認",
+    "local_files": [
+      "refs/ref.mp4"
+    ]
+  },
+  "canvas": {
+    "ratio": "9:16"
+  },
+  "palette": {
+    "background": "#000000",
+    "primary_text": "#FFFFFF",
+    "accent": "#E53935",
+    "outline": "#000000"
+  },
+  "background": {
+    "type": "solid",
+    "value": "",
+    "notes": "例：黒一色"
+  },
+  "typography": {
+    "headline": {
+      "family": "Anton",
+      "fallback": "Impact, Arial Black, sans-serif",
+      "weight": 900,
+      "italic": true,
+      "size_px": 120,
+      "letter_spacing_px": 1,
+      "line_height": 1.0,
+      "case": "upper",
+      "match": "approx",
+      "approx_note": "例：白の斜体・極太。書体名は未特定"
+    },
+    "body": {
+      "family": "Arial",
+      "fallback": "Helvetica, sans-serif",
+      "weight": 800,
+      "italic": false,
+      "size_px": 56,
+      "letter_spacing_px": 0,
+      "line_height": 1.2,
+      "case": "none",
+      "match": "approx",
+      "approx_note": "例：太めのサンセリフ"
+    }
+  },
+  "outline": {
+    "width_px": 8,
+    "color": "#000000",
+    "shadow": "0 8px 0 rgba(0,0,0,.6)"
+  },
+  "product": {
+    "area_pct": 45,
+    "box": {
+      "x": 0.1,
+      "y": 0.26,
+      "w": 0.8,
+      "h": 0.5
+    },
+    "angle_deg": 0,
+    "shadow": "0 40px 80px rgba(0,0,0,.6)"
+  },
+  "text_zones": {
+    "headline": {
+      "x": 0.06,
+      "y": 0.08,
+      "w": 0.88,
+      "h": 0.16,
+      "align": "center"
+    },
+    "sub": {
+      "x": 0.08,
+      "y": 0.78,
+      "w": 0.84,
+      "h": 0.08,
+      "align": "center"
+    },
+    "badge": {
+      "x": 0.6,
+      "y": 0.24,
+      "w": 0.34,
+      "h": 0.06,
+      "align": "center"
+    },
+    "cta": {
+      "x": 0.06,
+      "y": 0.8,
+      "w": 0.88,
+      "h": 0.12,
+      "align": "center"
+    }
+  },
+  "duration_s": 8,
+  "first_2s": {
+    "observed": "例：0.0秒で白フラッシュ→0.1秒に商品が拡大しながら入る→0.4秒に見出しが下から跳ねて出る→1.5秒に赤い帯",
+    "hook_slot": "hook"
+  },
+  "timeline": [
+    {
+      "t_start": 0.0,
+      "t_end": 0.35,
+      "element": "shape",
+      "color": "#FFFFFF",
+      "effect": "flash",
+      "in_s": 0.35,
+      "zone": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "observed": "例：白い光が一瞬"
+    },
+    {
+      "t_start": 0.1,
+      "t_end": 8.0,
+      "element": "product",
+      "product": 0,
+      "effect": "zoom-in",
+      "in_s": 0.5,
+      "continuous": "ken-burns",
+      "move": {
+        "at": 5.0,
+        "dur": 0.5,
+        "to": {
+          "x": 0.18,
+          "y": 0.3,
+          "w": 0.64,
+          "h": 0.42
+        }
+      },
+      "observed": "例：商品が大きめから定位置へ寄り、5秒で中央に小さく移る（消さずに連続で動かす）"
+    },
+    {
+      "t_start": 0.4,
+      "t_end": 2.6,
+      "element": "text",
+      "style": "headline",
+      "slot": "hook",
+      "effect": "pop",
+      "in_s": 0.3,
+      "observed": "例：見出しが弾んで出る"
+    },
+    {
+      "t_start": 1.5,
+      "t_end": 5.2,
+      "element": "text",
+      "style": "badge",
+      "slot": "badge",
+      "effect": "wipe",
+      "in_s": 0.35,
+      "observed": "例：赤い帯が左から伸びる"
+    },
+    {
+      "t_start": 2.6,
+      "t_end": 5.2,
+      "element": "text",
+      "style": "headline",
+      "slot": "point",
+      "effect": "slide-up",
+      "in_s": 0.3,
+      "observed": "例：2つ目の見出しが下から"
+    },
+    {
+      "t_start": 3.0,
+      "t_end": 5.2,
+      "element": "text",
+      "style": "sub",
+      "slot": "detail",
+      "effect": "typewriter",
+      "in_s": 1.0,
+      "observed": "例：説明が1文字ずつ"
+    },
+    {
+      "t_start": 5.2,
+      "t_end": 8.0,
+      "element": "text",
+      "style": "headline",
+      "slot": "cta_title",
+      "effect": "slide-down",
+      "in_s": 0.3,
+      "observed": "例：締めの見出し"
+    },
+    {
+      "t_start": 5.5,
+      "t_end": 8.0,
+      "element": "text",
+      "style": "cta",
+      "slot": "cta",
+      "effect": "pop",
+      "in_s": 0.3,
+      "observed": "例：赤い行動案内が弾む"
+    }
+  ],
+  "cta_placement": [
+    "video-end",
+    "caption"
+  ],
+  "differences": {
+    "intentional": [
+      "例：手元の実写は商品画像のズームで代替"
+    ],
+    "unreproduced": [
+      "例：参考の効果音・BGMは未再現（無音版）"
+    ]
+  }
+}

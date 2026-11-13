@@ -1,0 +1,9 @@
+{
+  "result": "pending",
+  "evidence_ids": [],
+  "repeated_demand": "",
+  "target_market_fit": "",
+  "alternative_comparison": "",
+  "limitations": "",
+  "note": "売買の反復、対象国・言語・状態の一致、他候補との比較を本文で説明。supportedという単語や点数だけでは採用しない。"
+}

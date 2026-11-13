@@ -1,0 +1,6 @@
+// v1: パッケージ依存を起動せず、入力・出力保全・動画情報の判定を検査。
+import test from 'node:test';import assert from 'node:assert/strict';import {mkdtempSync,writeFileSync,rmSync} from 'node:fs';import {tmpdir} from 'node:os';import {join} from 'node:path';import {args,number,freshFile,metadata} from './runtime.mjs';
+test('arguments keep space-containing paths intact',()=>{assert.deepEqual(args(['a b.html','--out','my video.mp4']),{input:'a b.html',out:'my video.mp4'});assert.throws(()=>args(['a','--out']));});
+test('invalid frame settings rejected',()=>{for(const n of ['NaN','Infinity',0,-2,100])assert.throws(()=>number(n,30,1,60,'fps'));assert.equal(number('30',30,1,60,'fps'),30);});
+test('existing output is protected',()=>{const p=mkdtempSync(join(tmpdir(),'tcg-test-'));try{const f=join(p,'existing.mp4');writeFileSync(f,'original');assert.throws(()=>freshFile(f));assert.equal(freshFile(join(p,'new.mp4')),join(p,'new.mp4'));}finally{rmSync(p,{recursive:true});}});
+test('video metadata separates audio and dimensions',()=>{const v='Duration: 00:00:24.00, start: 0.000\n Stream #0:0: Video: h264, yuv420p, 1080x1920, 30 fps\n';assert.deepEqual(metadata(v),{duration:24,width:1080,height:1920,fps:30,has_audio:false});assert.equal(metadata(v+' Stream #0:1: Audio: aac').has_audio,true);assert.throws(()=>metadata('broken file'));});

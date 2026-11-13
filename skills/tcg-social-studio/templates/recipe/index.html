@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TCG recipe render</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;background:#000}body{overflow:hidden}
+#canvas{position:relative;overflow:hidden;width:1080px}
+.layer{position:absolute;display:none;will-change:transform,opacity}
+.layer.on{display:flex}
+.text{flex-direction:column;justify-content:center;overflow:hidden;white-space:pre-line;overflow-wrap:anywhere;paint-order:stroke fill}
+.product{align-items:center;justify-content:center}
+.product img{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain;display:block}
+.shape{pointer-events:none}
+#draft{position:absolute;top:12px;right:16px;font:700 22px Arial,sans-serif;color:#ffd86f;z-index:99}
+</style></head><body><main id="canvas"><div id="draft"></div></main>
+<script src="recipe.js"></script><script src="content.js"></script><script>
+// v1.9: 作り方カード（window.RECIPE）と今回の素材・文（window.CONTENT）から画面を組む。
+// 参考ごとの値はカード側に書き、このHTMLへ直書きしない。参考専用の見た目が要る場合は
+// templates/recipes/<ref_id>/index.html に同じ約束（__dur/__seek/__sceneStarts/__check）で作る。
+const R=window.RECIPE,C=window.CONTENT;
+if(!R||!C)throw Error('Missing RECIPE or CONTENT');
+const SIZE=R.canvas.ratio==='custom'?[R.canvas.width,R.canvas.height]:{'4:5':[1080,1350],'9:16':[1080,1920]}[R.canvas&&R.canvas.ratio];if(!SIZE)throw Error('Invalid ratio');
+const [W,H]=SIZE;window.STORY={ratio:R.canvas.ratio,width:W,height:H,draft:!!C.draft,kind:R.kind};
+const root=document.querySelector('#canvas');root.style.width=W+'px';root.style.height=H+'px';
+const bg=R.background||{};root.style.background=bg.type==='image'?`${R.palette.background} url("${bg.value}") center/cover no-repeat`:(bg.type==='solid'||!bg.value?R.palette.background:bg.value);
+document.querySelector('#draft').textContent=C.draft?'DRAFT / NOT FOR POSTING':'';
+const T=R.typography||{};
+for(const f of (T.font_files||[])){const s=document.createElement('style');s.textContent=`@font-face{font-family:"${f.family}";src:url("${f.src}");font-weight:${f.weight||'100 900'};font-style:${f.style||'normal'}}`;document.head.append(s)}
+const OL=R.outline||{width_px:0};
+const STYLE={headline:{t:T.headline,color:R.palette.primary_text},sub:{t:T.body,color:R.palette.primary_text},badge:{t:T.body,color:R.palette.badge_text||R.palette.background,bg:R.palette.accent,scale:.8},cta:{t:T.headline,color:R.palette.cta_text||R.palette.primary_text,bg:R.palette.cta_bg||R.palette.accent,scale:.62}};
+function zone(z){return {x:z.x*W,y:z.y*H,w:z.w*W,h:z.h*H}}
+function place(node,z){const b=zone(z);Object.assign(node.style,{left:b.x+'px',top:b.y+'px',width:b.w+'px',height:b.h+'px'})}
+// 場面（スライド1枚／動画は全体1本）ごとにレイヤーを時刻付きで並べる。
+let layers=[],starts=[],dur=0;
+if(R.kind==='video'){dur=R.duration_s;layers=R.timeline.map(x=>({...x}));starts=[...new Set(layers.filter(x=>x.element==='text').map(x=>x.t_start))].sort((a,b)=>a-b);}
+else{const sec=C.slide_seconds||3;R.slides.forEach((s,i)=>{starts.push(i*sec);for(const l of s.layers)layers.push({in_s:.3,...l,t_start:i*sec,t_end:(i+1)*sec,slide:i});});dur=R.slides.length*sec;}
+const nodes=layers.map((l,i)=>{let n=document.createElement('div');n.className='layer '+l.element;n.dataset.i=i;
+ if(l.element==='text'){const st=STYLE[l.style];const t=st.t||{};const text=(C.texts||{})[l.slot];n.dataset.full=text??'';n.textContent=text??'';
+  const z=l.zone||R.text_zones[l.style];n.style.textAlign=z.align||'left';n.style.alignItems={left:'flex-start',center:'center',right:'flex-end'}[z.align||'left'];
+  Object.assign(n.style,{fontFamily:`"${t.family}",${t.fallback||'sans-serif'}`,fontWeight:t.weight,fontStyle:t.italic?'italic':'normal',lineHeight:t.line_height||1.15,letterSpacing:(t.letter_spacing_px||0)+'px',textTransform:t.case==='upper'?'uppercase':'none',color:st.color});
+  n.dataset.base=Math.round((t.size_px||48)*(l.size_scale||st.scale||1));n.style.fontSize=n.dataset.base+'px';
+  if(OL.width_px>0)n.style.webkitTextStroke=OL.width_px+'px '+OL.color;if(OL.shadow&&OL.shadow!=='none')n.style.textShadow=OL.shadow;
+  if(st.bg){n.style.background=st.bg;n.style.borderRadius=(R.cta_radius_px??18)+'px';n.style.padding='0 28px';}
+  place(n,z);}
+ else if(l.element==='product'){const p=(C.products||[])[l.product];const img=document.createElement('img');if(p&&p.image){img.src=p.image;img.alt=p.name||'Product';}n.append(img);
+  const pr=R.product||{};if(pr.shadow)img.style.filter=`drop-shadow(${pr.shadow})`;place(n,l.zone||pr.box);n.dataset.key=p?p.image:'missing';}
+ else{n.style.background=l.color;place(n,l.zone||{x:0,y:0,w:1,h:1});}
+ root.append(n);return n;});
+// 指定書体・文字サイズを守る。溢れを勝手な縮小で隠さず__checkで止める。
+function fit(n){n.style.fontSize=n.dataset.base+'px';}
+nodes.forEach(n=>{if(n.classList.contains('text'))fit(n)});
+const clamp=v=>Math.max(0,Math.min(1,v)),ease=p=>1-Math.pow(1-p,3),back=p=>{const c=1.70158;return 1+(c+1)*Math.pow(p-1,3)+c*Math.pow(p-1,2)};
+function lerpBox(a,b,p){return {x:a.x+(b.x-a.x)*p,y:a.y+(b.y-a.y)*p,w:a.w+(b.w-a.w)*p,h:a.h+(b.h-a.h)*p}}
+function keyState(keys,t){let a=keys[0],b=a;for(const k of keys){if(k.at<=t)a=k;else{b=k;break}b=a;}let p=b.at===a.at?0:clamp((t-a.at)/(b.at-a.at));const en=b.easing||'linear';if(en==='ease-out')p=ease(p);if(en==='ease-in-out')p=p*p*(3-2*p);return Object.fromEntries(['x_px','y_px','scale','rotation','opacity'].map(k=>[k,a[k]+(b[k]-a[k])*p]));}
+function apply(n,l,t){const on=t>=l.t_start&&t<l.t_end;n.classList.toggle('on',on);
+ // 時刻を戻しても同じ画面になるよう、毎回初期状態から組み直す。
+ Object.assign(n.style,{opacity:'',transform:'',clipPath:'',filter:''});if(l.element==='text')n.textContent=n.dataset.full;if(!on)return;
+ const lt=t-l.t_start,p=clamp(lt/(l.in_s||.3)),e=ease(p);let tx=0,ty=0,sc=1,op=1,rot=(l.element==='product'?(R.product||{}).angle_deg||0:0),clip='none';
+ switch(l.effect||'cut'){case'fade':op=e;break;case'slide-up':ty=(1-e)*90;op=e;break;case'slide-down':ty=-(1-e)*90;op=e;break;case'slide-left':tx=(1-e)*140;op=e;break;case'slide-right':tx=-(1-e)*140;op=e;break;
+  case'pop':sc=p<1?.55+.45*back(p):1;op=clamp(p*3);break;case'zoom-in':sc=1.35-.35*e;op=clamp(p*2);break;case'zoom-out':sc=.7+.3*e;op=e;break;
+  case'wipe':clip=`inset(0 ${(1-e)*100}% 0 0)`;break;case'shake':tx=Math.sin(lt*70)*14*(1-p);break;case'flash':op=1-e;break;
+  case'glow':n.style.filter=`drop-shadow(0 0 ${8+8*Math.sin(lt*6)}px ${R.palette.accent})`;break;
+  case'typewriter':{const f=n.dataset.full||'';n.textContent=f.slice(0,Math.ceil(f.length*p));break;}}
+ if(l.continuous==='ken-burns')sc*=1+.08*clamp(lt/(l.t_end-l.t_start));if(l.continuous==='float')ty+=Math.sin(lt*2*Math.PI/3)*12;
+ if(l.out_s&&t>l.t_end-l.out_s)op*=clamp((l.t_end-t)/l.out_s);
+ if(l.move){const base=l.zone||(l.element==='text'?R.text_zones[l.style]:(R.product||{}).box);const mp=ease(clamp((t-l.move.at)/(l.move.dur||.5)));place(n,lerpBox(base,l.move.to,mp));}
+ if(l.keyframes&&l.keyframes.length){const k=keyState(l.keyframes,lt);tx=k.x_px;ty=k.y_px;sc=k.scale;rot=k.rotation;op=k.opacity;}
+ n.style.opacity=op;n.style.transform=`translate(${tx}px,${ty}px) scale(${sc}) rotate(${rot}deg)`;n.style.clipPath=clip;}
+window.__dur=dur;window.__sceneStarts=starts;
+window.__seek=function(s){const t=Math.max(0,Math.min(dur-1e-5,Number(s)||0));window.__time=t;nodes.forEach((n,i)=>apply(n,layers[i],t));return t};
+// 同じ商品が切れ目で消える・跳ぶのを見つける。続けて見せるなら1レイヤーにして move を使う。
+window.__checkContinuity=function(){if(R.kind!=='video')return [];const out=[];
+ layers.forEach((a,i)=>layers.forEach((b,j)=>{if(i===j||a.element!=='product'||b.element!=='product'||a.product!==b.product)return;
+  if(Math.abs(a.t_end-b.t_start)<1e-6&&!(b.reference_cut===true&&b.observed))out.push(`Same product ${a.product} restarts at ${b.t_start}s; use one layer with move`);}));return out};
+window.__check=function(){const e=[],t=window.__time||0;if(C.draft)e.push('DRAFT');
+ if(/EDIT:|YOUR SHOP/.test(JSON.stringify(C)))e.push('Unfilled copy');
+ layers.forEach((l,i)=>{if(l.element==='text'&&!((C.texts||{})[l.slot]||'').trim())e.push('Missing text: '+l.slot);if(l.element==='product'&&!((C.products||[])[l.product]||{}).image)e.push('Missing product image: '+l.product)});
+ for(const im of document.images)if(!im.complete||!im.naturalWidth)e.push('Missing image');
+ nodes.forEach(n=>{if(n.classList.contains('on')&&n.classList.contains('text')){const full=n.textContent;n.textContent=n.dataset.full;if(n.scrollHeight>n.clientHeight+2||n.scrollWidth>n.clientWidth+2)e.push('Text overflow: '+layers[n.dataset.i].slot);n.textContent=full;}});
+ // CTA：スライドは最後の1枚、動画は最後の0.5秒に、空でないCTA文字が見えること。
+ const ctaAt=x=>layers.some(l=>l.style==='cta'&&x>=l.t_start&&x<l.t_end&&((C.texts||{})[l.slot]||'').trim());
+ const lastT=R.kind==='video'?dur-.3:dur-.1;if((R.cta_placement||[]).some(p=>p==='last-slide'||p==='video-end')&&!ctaAt(lastT))e.push('CTA missing at end');
+ e.push(...window.__checkContinuity());window.__seek(t);return [...new Set(e)]};
+window.__seek(Number(new URLSearchParams(location.search).get('t')||0));
+</script></body></html>

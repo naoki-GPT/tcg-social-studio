@@ -1,0 +1,9 @@
+{
+  "sample": true,
+  "mode": "same-item",
+  "as_of": "2026-10-31T09:00:00+09:00",
+  "max_age_hours": 24,
+  "fx": {"jpy_per_usd": 150, "observed_at": "2026-10-31T08:00:00+09:00", "source_url": "https://example.com/fixture-fx"},
+  "japan": {"product_id":"fixture-box-001","name":"TEST BOX","language":"Japanese","edition":"TEST EDITION","number":"TEST-001","unit":"box","contents":"30 packs per box","condition":"new","grade":"not graded","packaging":"sealed","amount":15000,"currency":"JPY","basis":"asking","shipping":"excluded","tax":"excluded","observed_at":"2026-10-31T08:00:00+09:00","source_url":"https://example.com/fixture-japan"},
+  "overseas": {"product_id":"fixture-box-001","name":"TEST BOX","language":"Japanese","edition":"TEST EDITION","number":"TEST-001","unit":"box","contents":"30 packs per box","condition":"new","grade":"not graded","packaging":"sealed","amount":130,"currency":"USD","basis":"asking","shipping":"excluded","tax":"excluded","observed_at":"2026-10-31T08:30:00+09:00","source_url":"https://example.com/fixture-overseas"}
+}

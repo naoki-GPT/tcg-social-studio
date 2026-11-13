@@ -1,0 +1,35 @@
+{
+  "version": "2.0",
+  "status": "draft",
+  "kind": "carousel",
+  "reference_url": "",
+  "reference_id": "",
+  "expected_count": null,
+  "fps": null,
+  "duration_frames": null,
+  "full_reference_reviewed": false,
+  "units": [],
+  "tracks": {"captions": [], "motion": [], "effects": [], "audio": []},
+  "intentional_differences": [],
+  "unresolved_differences": [],
+  "unit_fields": {
+    "id": "unique unit id",
+    "source_index": "carousel page number, starting at 1",
+    "start_frame": "video inclusive start",
+    "end_frame": "video exclusive end",
+    "source_file": "relative file path",
+    "source_sha256": "hash of the complete source file",
+    "onscreen_text": "verified screen text, not caption paraphrase",
+    "role": "what the viewer learns here",
+    "design": {"background":"", "typography":"", "geometry":"", "decorations":""},
+    "replacement": "own product, verified offer and destination"
+  },
+  "track_fields": {
+    "id": "unique event id",
+    "start_frame": "inclusive start",
+    "end_frame": "exclusive end",
+    "text_or_effect": "exact text or observed effect",
+    "keyframes": "frame, x, y, scale, rotation, opacity, easing",
+    "evidence_frame_files": "actual source frame paths"
+  }
+}

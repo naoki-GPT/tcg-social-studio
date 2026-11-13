@@ -1,0 +1,60 @@
+{
+  "schema": "tcg-recipe-card/1",
+  "is_example": true,
+  "_note": "例（架空値）。実在の参考を観察した値ではない。台帳の参考1件ごとに、このファイルを複製して実測値で書き直す。is_example:true のままでは納品検査に通らない。",
+  "card_id": "RC-EXAMPLE-SLIDE-01-v1",
+  "kind": "slideshow",
+  "reference": {
+    "ref_id": "EXAMPLE-SLIDE-01",
+    "ledger": "design",
+    "url": "https://example.com/p/example-slide-01",
+    "observed_at": "2026-11-12",
+    "observed_scope": "例：カルーセル全5枚を開いて確認",
+    "local_files": ["refs/slides/ref_01.png", "refs/slides/ref_02.png", "refs/slides/ref_03.png", "refs/slides/ref_04.png", "refs/slides/ref_05.png"]
+  },
+  "canvas": {"ratio": "4:5"},
+  "palette": {"background": "#0E1A3A", "primary_text": "#FFFFFF", "accent": "#E8B84A", "outline": "#0A0F22", "panel": "#16244F"},
+  "background": {"type": "gradient", "value": "linear-gradient(160deg,#0E1A3A 0%,#16244F 60%,#0A0F22 100%)", "notes": "例：濃紺の斜めグラデーション"},
+  "typography": {
+    "headline": {"family": "Anton", "fallback": "Impact, Arial Black, sans-serif", "weight": 900, "italic": false, "size_px": 92, "letter_spacing_px": 0, "line_height": 1.05, "case": "upper", "match": "approx", "approx_note": "例：参考は縦長の極太サンセリフ。書体名は未特定なので近似"},
+    "body": {"family": "Arial", "fallback": "Helvetica, sans-serif", "weight": 700, "italic": false, "size_px": 40, "letter_spacing_px": 0, "line_height": 1.25, "case": "none", "match": "approx", "approx_note": "例：一般的なサンセリフの太字"}
+  },
+  "outline": {"width_px": 0, "color": "#0A0F22", "shadow": "0 6px 18px rgba(0,0,0,.45)"},
+  "product": {"area_pct": 38, "box": {"x": 0.08, "y": 0.30, "w": 0.52, "h": 0.52}, "angle_deg": -4, "shadow": "0 30px 60px rgba(0,0,0,.5)"},
+  "text_zones": {
+    "headline": {"x": 0.07, "y": 0.06, "w": 0.86, "h": 0.20, "align": "left"},
+    "sub": {"x": 0.62, "y": 0.36, "w": 0.32, "h": 0.40, "align": "left"},
+    "badge": {"x": 0.62, "y": 0.78, "w": 0.32, "h": 0.10, "align": "center"},
+    "cta": {"x": 0.07, "y": 0.80, "w": 0.86, "h": 0.14, "align": "center"}
+  },
+  "slide_count": 5,
+  "slides": [
+    {"index": 1, "role": "hook", "observed": "例：大見出しだけ。商品は小さく右下", "layers": [
+      {"element": "text", "style": "headline", "slot": "hook"},
+      {"element": "product", "product": 0, "zone": {"x": 0.45, "y": 0.42, "w": 0.48, "h": 0.48}}
+    ]},
+    {"index": 2, "role": "product", "observed": "例：商品左・特徴右", "layers": [
+      {"element": "text", "style": "headline", "slot": "p1_title"},
+      {"element": "product", "product": 0},
+      {"element": "text", "style": "sub", "slot": "p1_point"},
+      {"element": "text", "style": "badge", "slot": "p1_badge"}
+    ]},
+    {"index": 3, "role": "product", "observed": "例：2枚目と同じ配置で別商品", "layers": [
+      {"element": "text", "style": "headline", "slot": "p2_title"},
+      {"element": "product", "product": 1},
+      {"element": "text", "style": "sub", "slot": "p2_point"},
+      {"element": "text", "style": "badge", "slot": "p2_badge"}
+    ]},
+    {"index": 4, "role": "benefit", "observed": "例：買い手の得を短文で", "layers": [
+      {"element": "text", "style": "headline", "slot": "benefit_title"},
+      {"element": "text", "style": "sub", "slot": "benefit_body", "zone": {"x": 0.07, "y": 0.32, "w": 0.86, "h": 0.40}}
+    ]},
+    {"index": 5, "role": "cta", "observed": "例：最後の1枚に行動案内", "layers": [
+      {"element": "text", "style": "headline", "slot": "cta_title"},
+      {"element": "product", "product": 0, "zone": {"x": 0.25, "y": 0.28, "w": 0.50, "h": 0.46}},
+      {"element": "text", "style": "cta", "slot": "cta"}
+    ]}
+  ],
+  "cta_placement": ["last-slide", "caption"],
+  "differences": {"intentional": ["例：参考のロゴは自社名に置換"], "unreproduced": ["例：参考の紙の質感は未再現"]}
+}

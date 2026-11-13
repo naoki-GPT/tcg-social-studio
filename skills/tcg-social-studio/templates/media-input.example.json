@@ -1,0 +1,11 @@
+{
+  "version": "2.2",
+  "reference_id": "EXAMPLE-CAROUSEL",
+  "reference_url": "https://example.com/reference",
+  "kind": "carousel",
+  "expected_count": 2,
+  "files": [
+    {"position": 1, "kind": "image", "path": "received/01.png"},
+    {"position": 2, "kind": "image", "path": "received/02.png"}
+  ]
+}
