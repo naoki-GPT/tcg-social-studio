@@ -1,0 +1,15 @@
+{
+  "version": "2.0",
+  "checked_at": "2026-11-13T04:49:12.802854+00:00",
+  "structural_pass": false,
+  "errors": [
+    "mode: only sales completion is supported; prototypes do not pass this gate",
+    "selection.review: demand not supported",
+    "selection.evidence: missing",
+    "demand: ranks/likes/asking prices alone do not support buying demand",
+    "selection.review: no qualifying evidence used",
+    "breakdown: unresolved differences",
+    "qa: unresolved differences"
+  ],
+  "limits": "Files and declarations checked. Does not prove market truth, visual fidelity, copyright clearance, or business results."
+}
