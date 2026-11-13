@@ -1,5 +1,5 @@
 {
-  "version": "2.0",
+  "version": "3.0",
   "mode": "prototype",
   "created_at": "2026-11-13T04:49:12.544163+00:00",
   "objective": {
@@ -101,5 +101,171 @@
       "商品・価格・日付・見出しを固定原稿へ置換",
       "元店名・ロゴ・実績・条件を除外しTRIALと指定の根拠／見積項目／DM案内へ置換"
     ]
-  }
+  },
+  "revision_history": [
+    {
+      "revision": "v2",
+      "brief": "codex_brief_v2.md",
+      "changes": [
+        "1枚目はv1維持",
+        "2枚目：主張型見出し・各行に対象商品画像",
+        "3枚目：副題・カード／盾／箱／飛行機の描画アイコン。業者ロゴなし",
+        "4枚目：主張型見出し・下部濃紺DM帯"
+      ],
+      "outputs": [
+        {
+          "file": "production/slides_v2/01.png",
+          "size": [
+            1080,
+            1350
+          ],
+          "sha256": "6285270d0431ef0f065f8eda43895aaead1c4c16f6b39d5cb73fc1b7a795d722"
+        },
+        {
+          "file": "production/slides_v2/02.png",
+          "size": [
+            1080,
+            1350
+          ],
+          "sha256": "138aa99e7b7ed22a04370d5f0d73cc053a2508c0db48c76f302aac38b83f6daf"
+        },
+        {
+          "file": "production/slides_v2/03.png",
+          "size": [
+            1080,
+            1350
+          ],
+          "sha256": "2da521ed1d1dad16f1d48af1fd85d8ed376815011a0237ce56d5fd7e2b9d47a5"
+        },
+        {
+          "file": "production/slides_v2/04.png",
+          "size": [
+            1080,
+            1350
+          ],
+          "sha256": "a9d1224fe58d9ef5c83e4c4d1fbdb11f604eaa7cd040a6fd01302d0d36c4a865"
+        }
+      ],
+      "qa": {
+        "recipe": "production/recipe-check-v2.json",
+        "technical": "production/technical-check-v2.json",
+        "content": "production/content-check-v2.json",
+        "visual": "production/visual-review-v2.md",
+        "comparison": "compare_v2/compare_notes.md",
+        "result": "pass for v2 brief",
+        "unresolved_differences": [
+          "原書体未特定：全ページapprox（ローカルDejaVu系）",
+          "ページ1の立体金リボン・光粒子・ボールはCSSによる平面的な装飾へ近似。完全一致ではない",
+          "コダック元素材の解像感が他3種より低い（v1継続）"
+        ]
+      },
+      "preservation": "v1 outputs and caption unchanged; slide 1 byte-identical",
+      "build_adaptation": "build_trial_v2.py invokes build_from_recipe.build with the existing local template fallback; original skill unchanged.",
+      "sales_gate": "v1の販売用gate未合格状態は継続。本改訂で販売用の新規承認は行わない。"
+    },
+    {
+      "revision": "v3",
+      "brief": "codex_brief_v3.md",
+      "source": "production/build_v3/index.html",
+      "builder": "build_trial_v3.py",
+      "renderer": "render_trial_v3.mjs",
+      "measurement": "06_measurement_ref003.md",
+      "outputs": [
+        {
+          "file": "production/slides_v3/01.png",
+          "size": [
+            1080,
+            1350
+          ],
+          "sha256": "19105bd5abee8eacf066042f4bc2fffc20cfcc759b327683fe4b24863cbafece"
+        },
+        {
+          "file": "production/slides_v3/02.png",
+          "size": [
+            1080,
+            1350
+          ],
+          "sha256": "7960203a212bfe9f685055cc8932cb405f8bdbfcfcc7845456528a5dd4583aef"
+        },
+        {
+          "file": "production/slides_v3/03.png",
+          "size": [
+            1080,
+            1350
+          ],
+          "sha256": "6cb112dc956c14ff79ac35aac4fca274bac5b63d81e2a59d46f5cd880623379f"
+        },
+        {
+          "file": "production/slides_v3/04.png",
+          "size": [
+            1080,
+            1350
+          ],
+          "sha256": "1b3ffb17da3655aa846b411a53a14b9a1e833c0e3bd66944af6e657ee841d021"
+        }
+      ],
+      "comparison": "compare_v3/contact_sheet.jpg",
+      "qa": {
+        "content": "production/content-check-v3.json",
+        "technical": "production/technical-check-v3.json",
+        "dimensions": "compare_v3/dimension-check.json",
+        "visual": "production/visual-review-v3.md",
+        "result": "部分再現・未解決差分あり（完全一致ではない）",
+        "technical_result": "固定文・画像・寸法検査合格。scrollHeight警告8件は残存、目視で文字切れなし。",
+        "unresolved_differences": [
+          "原書体未特定、字形寸法・文字幅が異なる",
+          "金帯・星光・ボールの質感・曲線が異なる",
+          "1枚目の商品減少による余白、為替帯幅+48px",
+          "3枚目は2列×2段へ変更、下部写真区画を番号一覧へ変更",
+          "4枚目は4行へ変更、本文文字サイズは元より小さい"
+        ]
+      },
+      "preservation": {
+        "caption_unchanged": true,
+        "v1_preserved": true,
+        "v2_preserved": true,
+        "content_json_unchanged": true,
+        "all_png_1080x1350": true,
+        "original_product_assets_preserved": true,
+        "fixed_texts_present": true,
+        "no_js_or_missing_images": true
+      },
+      "export_adjustment": "初回比較後の修正1回。修正中の見出し折返し不具合を同修正内で修正。initial画像を保持。"
+    }
+  ],
+  "current_revision": "v3",
+  "current_outputs": [
+    {
+      "file": "production/slides_v3/01.png",
+      "size": [
+        1080,
+        1350
+      ],
+      "sha256": "19105bd5abee8eacf066042f4bc2fffc20cfcc759b327683fe4b24863cbafece"
+    },
+    {
+      "file": "production/slides_v3/02.png",
+      "size": [
+        1080,
+        1350
+      ],
+      "sha256": "7960203a212bfe9f685055cc8932cb405f8bdbfcfcc7845456528a5dd4583aef"
+    },
+    {
+      "file": "production/slides_v3/03.png",
+      "size": [
+        1080,
+        1350
+      ],
+      "sha256": "6cb112dc956c14ff79ac35aac4fca274bac5b63d81e2a59d46f5cd880623379f"
+    },
+    {
+      "file": "production/slides_v3/04.png",
+      "size": [
+        1080,
+        1350
+      ],
+      "sha256": "1b3ffb17da3655aa846b411a53a14b9a1e833c0e3bd66944af6e657ee841d021"
+    }
+  ]
 }
