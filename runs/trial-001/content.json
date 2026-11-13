@@ -7,9 +7,9 @@
     "h3": "SAR & AR Market Prices",
     "fx": "1 USD = ¥159.8 (as of November 13)",
     "date": "Prices as of November 13",
-    "why": "WHY THESE FOUR",
-    "quote": "WHAT YOUR QUOTE INCLUDES",
-    "cta_title": "INTERESTED? SEND US A DM!",
+    "why": "THESE FOUR ARE SELLING NOW",
+    "quote": "NO SURPRISES",
+    "cta_title": "ONE DM GETS YOU THE FULL QUOTE",
     "cta": "DM \"SAR LIST\" with: the card names / the quantities / your country",
     "reply": "We reply with price, condition and shipping for each card.",
     "foot": "Common trial mock — shop name and terms are set per shop before real use.",
@@ -20,7 +20,8 @@
     "quote0": "The exact card and collector number",
     "quote1": "Condition stated before payment — no surprises",
     "quote2": "Packing: sleeve + rigid holder, protected for international shipping",
-    "quote3": "Shipping quoted to your country (DHL / FedEx / EMS)"
+    "quote3": "Shipping quoted to your country (DHL / FedEx / EMS)",
+    "quote_sub": "Every quote includes, in writing:"
   },
   "products": [
     {
@@ -72,5 +73,6 @@
       ]
     }
   ],
-  "price_provenance": "依頼者固定値。全種PriceCharting未鑑定インデックス（eBay成約ベース、2026-11-13取得）、USD×159.8、10円単位四捨五入。新規調査・価格変更なし。"
+  "price_provenance": "依頼者固定値。全種PriceCharting未鑑定インデックス（eBay成約ベース、2026-11-13取得）、USD×159.8、10円単位四捨五入。新規調査・価格変更なし。",
+  "revision": "v2"
 }
