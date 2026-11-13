@@ -12,6 +12,8 @@
 | [skills/tcg-social-intake](skills/tcg-social-intake/SKILL.md) | 第1工程の前提確認1.0.0。記録形式と検査5ファイル |
 | [experiments/stage2](experiments/stage2/README.md) | 停止時点の第2工程案5ファイル。未完成・通常実行対象外 |
 | [docs/MUSE_WORKFLOW.md](docs/MUSE_WORKFLOW.md) | MuseとCodexの役割、受け渡す資料、承認と投稿の設計案 |
+| [docs/COMMON_TRIAL_BRIEF.md](docs/COMMON_TRIAL_BRIEF.md) | 共通試作で既に決まった条件と、調査開始用の仮案 |
+| [docs/REFERENCE_ASSETS.md](docs/REFERENCE_ASSETS.md) | 別配布の参考原本ZIP（画像27枚・動画5本・本文12件）の内容と検証結果 |
 | [docs/KNOWN_ISSUES.md](docs/KNOWN_ISSUES.md) | 引き継ぐ問題と改善の完了条件 |
 | [docs/PACKAGE_MANIFEST.json](docs/PACKAGE_MANIFEST.json) | 配布版の各ファイルのSHA256。受け渡し時の一致を確認する記録 |
 | [docs/VALIDATION.md](docs/VALIDATION.md) | 今回実行した検査と、実行していない検査 |
