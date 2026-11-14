@@ -8,7 +8,8 @@
 | ブラウザーのダウンロードに失敗する | `Error: Download failure, code=1` | もう1度 `npm run browser` を実行する。それでも失敗するなら、PCに入っているChromeかEdgeの実行ファイルの場所を `CHROME_PATH` に入れる。 |
 | Pythonの部品を入れられない | `error: externally-managed-environment` | PC全体には入れず、スキルのフォルダに専用の環境を作る。手順は [START_HERE.md](../START_HERE.md) の「2. PCの準備」。以後、`python` の代わりに専用の環境の中のPythonを使う。 |
 | 分析の道具が動かない | `ModuleNotFoundError: No module named 'cv2'` | 専用の環境のPythonで `-m pip install -r requirements-analysis.txt` を実行し、同じPythonで道具を動かす。 |
-| 設定が足りない | `[ERROR] sheet_url: empty` など | `node scripts/check_client.mjs` が出した欄を `client.json` に書く。書き方は `client.example.json`。 |
-| 表がひな形のまま | `[ERROR] sheet_url: this is the template sheet itself` | ひな形を開き、「ファイル」→「コピーを作成」で作った表のアドレスを `sheet_url` に書く。ひな形には書き込まない。 |
+| 設定が足りない | `[ERROR] client_name: empty` など | `node scripts/check_client.mjs` が出した欄を `client.json` に書く。書き方は `client.example.json`。 |
+| 表か共有フォルダがまだ無い | `[TODO] sheet_url: empty` など | 人に頼まず、[START_HERE.md](../START_HERE.md) の「表と共有フォルダを作る」のとおりに自分で作り、アドレスを `client.json` に書く。 |
+| 表がひな形のまま | `[ERROR] sheet_url: this is the template sheet itself` | ひな形をコピーして作った表のアドレスを `sheet_url` に書く。ひな形には書き込まない。 |
 | 参考投稿を保存できない | 文章は読めるが、画像や動画のファイルが手に入らない | [素材を取ってくる](assets.md) の「開けない・保存できないとき」のとおりに進む。保存を試さずに先へ進まない。 |
-| 表の「見た目」に画像が出ない | 欄が空、またはエラー表示 | 画像を置いたフォルダが「リンクを知っている全員が閲覧できる」になっているかを確かめる。直らなければ、欄にどんな画像かを10字ほどで書く（[表の書き方](sheet.md)）。 |
+| 表の「見た目」に画像が出ない | 欄が空、またはエラー表示 | 画像を置いたフォルダが「リンクを知っている全員が閲覧できる」になっているかを確かめる。共有の設定、アドレスの間違いや途中切れを直してから次へ進む。言葉を書いて済ませない（[表の書き方](sheet.md)）。 |
