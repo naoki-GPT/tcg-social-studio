@@ -27,3 +27,6 @@ Thumbs.db
 *.wav
 *.zip
 *.log
+
+# 参考の原本の動画は入れる
+!/reference-originals/**/*.mp4
