@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Parts Demo</title>
+<!--
+  動きの部品（parts.js）の動作確認用。投稿の見本ではない。
+  色・書体・配置はわざと素っ気なくしてある（灰色の箱と部品名だけ）。見た目はここから写さない。
+  確認: node scripts/capture_frames.mjs templates/parts/demo.html --out <新規フォルダ> --duration 10
+-->
+<style>
+  @font-face { font-family:'Shippori Mincho'; src:url('../../fonts/ShipporiMincho-Bold.ttf') format('truetype'); font-weight:700; }
+  @font-face { font-family:'Anton'; src:url('../../fonts/Anton-Regular.ttf') format('truetype'); font-weight:100 900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1080px; height:1920px; overflow:hidden; background:#4a4a4a; }
+  body { position:relative; font-family:'Anton', sans-serif; color:#e4e4e4; }
+
+  #label { position:absolute; left:60px; top:70px; font-size:96px; line-height:1.1; }
+  #note  { position:absolute; left:60px; top:200px; width:960px; font-family:'Shippori Mincho', serif; font-weight:700; font-size:40px; line-height:1.4; color:#cfcfcf; }
+  #clock { position:absolute; left:60px; bottom:60px; font-size:44px; color:#bdbdbd; }
+
+  #world { position:absolute; inset:0; }
+  .scene { position:absolute; left:0; top:420px; width:1080px; height:1260px; }
+  .box   { position:absolute; background:#8c8c8c; }
+  .word  { position:absolute; left:0; width:1080px; text-align:center; }
+
+  #flashEl { position:absolute; inset:0; background:#fff; opacity:0; }
+
+  #sparkBox { left:140px; top:230px; width:800px; height:800px; background:#333; color:#f2f2f2; }
+  #sweepBox { left:140px; top:330px; width:800px; height:600px; overflow:hidden; background:#6a6a6a; }
+  #sweepBand { position:absolute; left:0; top:0; width:260px; height:100%; mix-blend-mode:screen;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.85) 50%, rgba(255,255,255,0)); }
+  #kbFrame { left:140px; top:230px; width:800px; height:800px; overflow:hidden; background:#333; }
+  #kbInner { position:absolute; inset:0;
+    background:
+      linear-gradient(#b0b0b0 2px, transparent 2px) 0 0 / 100px 100px,
+      linear-gradient(90deg, #b0b0b0 2px, transparent 2px) 0 0 / 100px 100px,
+      #707070; }
+  #kbInner div { position:absolute; left:300px; top:300px; width:200px; height:200px; background:#d0d0d0; }
+  .cutBox { left:240px; top:330px; width:600px; height:600px; font-size:360px; line-height:600px; text-align:center; color:#222; }
+</style>
+</head>
+<body>
+  <div id="world">
+    <div id="label"></div>
+    <div id="note"></div>
+
+    <div class="scene" id="s0">
+      <div class="box" id="wipeA" style="left:140px; top:250px; width:800px; height:150px;"></div>
+      <div class="box" id="wipeB" style="left:140px; top:500px; width:800px; height:150px;"></div>
+      <div class="box" id="wipeC" style="left:140px; top:750px; width:800px; height:150px;"></div>
+    </div>
+    <div class="scene" id="s1">
+      <div class="word" id="slamEl" style="top:300px; font-size:480px; line-height:1;">128</div>
+    </div>
+    <div class="scene" id="s2">
+      <div class="word" id="popEl" style="top:480px; font-size:130px;">ONE TWO THREE FOUR</div>
+    </div>
+    <div class="scene" id="s3">
+      <div class="word" id="trackA" style="top:380px; font-size:110px;">TRACKING</div>
+      <div class="word" id="trackB" style="top:680px; font-size:110px;">TRACKING</div>
+    </div>
+    <div class="scene" id="s4">
+      <div class="box" id="fadeA" style="left:140px; top:250px; width:800px; height:280px;"></div>
+      <div class="box" id="fadeB" style="left:140px; top:650px; width:800px; height:280px;"></div>
+    </div>
+    <div class="scene" id="s5">
+      <div class="box" style="left:190px; top:280px; width:700px; height:700px;"></div>
+    </div>
+    <div class="scene" id="s6">
+      <div class="box" style="left:190px; top:280px; width:700px; height:700px;"></div>
+    </div>
+    <div class="scene" id="s7">
+      <div class="box" id="sparkBox"></div>
+    </div>
+    <div class="scene" id="s8">
+      <div class="box" id="sweepBox"><div id="sweepBand"></div></div>
+    </div>
+    <div class="scene" id="s9">
+      <div class="box" id="kbFrame"><div id="kbInner"><div></div></div></div>
+    </div>
+    <div class="scene" id="s10">
+      <div class="box cutBox" id="cutA" style="background:#9c9c9c;">A</div>
+      <div class="box cutBox" id="cutB" style="background:#c4c4c4;">B</div>
+      <div class="box cutBox" id="cutC" style="background:#747474;">C</div>
+    </div>
+    <div class="scene" id="s11">
+      <div class="word" id="countEl" style="top:440px; font-size:260px; line-height:1;"></div>
+    </div>
+
+    <div id="clock"></div>
+  </div>
+  <div id="flashEl"></div>
+
+<script src="parts.js"></script>
+<script>
+  const P = window.Parts;
+  const $ = id => document.getElementById(id);
+  const SLOT = 0.8;   // 1部品あたりの秒数（12部品 x 0.8秒 = 9.6秒。残りは最後の部品を表示したまま）
+  const DEMOS = [
+    ['wipeIn',     '帯が端から伸びて出る（左・右・中央）'],
+    ['slam',       '数字の叩き込み'],
+    ['popWords',   '語ごとに順番に出る'],
+    ['tracking',   '字間が詰まる／広がる'],
+    ['fadeSlide',  'フェードしながら移動'],
+    ['shake',      '画面シェイク（だんだん止まる）'],
+    ['flash',      '白フラッシュ'],
+    ['sparkle',    '星のきらめき（位置は種で固定）'],
+    ['lightSweep', '光の帯が斜めに横切る'],
+    ['kenBurns',   'ゆっくり寄る・流す'],
+    ['cut',        '場面のハードカット（A→B→C）'],
+    ['countUp',    '数字が上がる'],
+  ];
+  const scenes = DEMOS.map((d, i) => ({ el: $('s' + i), start: i * SLOT, end: i === DEMOS.length - 1 ? undefined : (i + 1) * SLOT }));
+  const popEls = P.splitWords($('popEl'));
+  const comma = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const pad2 = n => (n < 10 ? '0' : '') + n;
+
+  window.seek = function (t) {
+    const at = i => i * SLOT;   // i 番目の部品が始まる時刻
+
+    const now = P.cut(scenes, t);
+    const d = DEMOS[now < 0 ? 0 : now];
+    $('label').textContent = pad2((now < 0 ? 0 : now) + 1) + '  ' + d[0];
+    $('note').textContent = d[1];
+    $('clock').textContent = 't = ' + t.toFixed(2) + ' s';
+
+    P.wipeIn($('wipeA'), t, { start: at(0) + 0.05, dur: 0.45, from: 'left' });
+    P.wipeIn($('wipeB'), t, { start: at(0) + 0.15, dur: 0.45, from: 'right', ease: P.easeOutExpo });
+    P.wipeIn($('wipeC'), t, { start: at(0) + 0.25, dur: 0.45, from: 'center', ease: P.easeInOutCubic });
+
+    P.slam($('slamEl'), t, { start: at(1) + 0.1, dur: 0.4, fromScale: 3 });
+
+    P.popWords(popEls, t, { start: at(2) + 0.05, gap: 0.12, dur: 0.3 });
+
+    P.tracking($('trackA'), t, { start: at(3) + 0.05, dur: 0.6, from: 0.6, to: 0.05 });
+    P.tracking($('trackB'), t, { start: at(3) + 0.05, dur: 0.6, from: 0.0, to: 0.5 });
+
+    P.fadeSlide($('fadeA'), t, { start: at(4) + 0.05, dur: 0.5, dx: 0, dy: 120 });
+    P.fadeSlide($('fadeB'), t, { start: at(4) + 0.15, dur: 0.5, dx: -200, dy: 0 });
+
+    P.shake($('world'), t, { start: at(5) + 0.1, dur: 0.6, amp: 44 });
+
+    P.flash($('flashEl'), t, { start: at(6) + 0.2, dur: 0.4 });
+
+    P.sparkle($('sparkBox'), t, { seed: 7, count: 14, start: at(7), dur: SLOT, size: 90 });
+
+    P.lightSweep($('sweepBand'), t, { start: at(8) + 0.1, dur: 0.6, angle: 20 });
+
+    P.kenBurns($('kbInner'), t, { start: at(9), dur: SLOT, fromScale: 1, toScale: 1.5, fromX: 0, toX: -80, fromY: 0, toY: 40 });
+
+    P.cut([
+      { el: $('cutA'), start: at(10),        end: at(10) + 0.27 },
+      { el: $('cutB'), start: at(10) + 0.27, end: at(10) + 0.54 },
+      { el: $('cutC'), start: at(10) + 0.54 },
+    ], t);
+
+    P.countUp($('countEl'), t, { start: at(11) + 0.1, dur: 0.9, from: 0, to: 12800, format: v => '$' + comma(Math.round(v)) });
+  };
+
+  window.ready = (async () => {
+    await document.fonts.load('400 96px "Anton"');
+    await document.fonts.load('700 40px "Shippori Mincho"');
+    await document.fonts.ready;
+    window.fontCheck = {
+      'Anton': document.fonts.check('400 96px "Anton"'),
+      'Shippori Mincho': document.fonts.check('700 40px "Shippori Mincho"'),
+    };
+    window.seek(0);
+  })();
+</script>
+</body>
+</html>

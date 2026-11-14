@@ -23,7 +23,8 @@ IMG = ('.png', '.jpg', '.jpeg', '.webp')
 
 
 def ffmpeg_bin():
-    p = os.environ.get('FFMPEG_PATH') or shutil.which('ffmpeg')
+    local = Path(__file__).resolve().parent.parent / 'node_modules' / 'ffmpeg-static' / ('ffmpeg.exe' if os.name == 'nt' else 'ffmpeg')
+    p = os.environ.get('FFMPEG_PATH') or (str(local) if local.exists() else None) or shutil.which('ffmpeg')
     if not p: raise RuntimeError('ffmpeg が見つからない。FFMPEG_PATH を設定するか ffmpeg を入れる')
     return p
 

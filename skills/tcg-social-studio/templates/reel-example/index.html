@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Price Table Reel</title>
+<style>
+  @font-face { font-family:'Shippori Mincho'; src:url('../../fonts/ShipporiMincho-Bold.ttf') format('truetype'); font-weight:700; }
+  @font-face { font-family:'Anton'; src:url('../../fonts/Anton-Regular.ttf') format('truetype'); font-weight:100 900; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1080px; height:1920px; overflow:hidden; background:#060B1E; }
+  body { font-family:'Anton', sans-serif; position:relative; }
+
+  /* ---------- background ---------- */
+  #bg { position:absolute; inset:0;
+    background:
+      radial-gradient(1100px 700px at 50% 12%, rgba(64,84,160,.34), rgba(64,84,160,0) 70%),
+      radial-gradient(900px 900px at 50% 88%, rgba(30,42,96,.35), rgba(30,42,96,0) 70%),
+      linear-gradient(180deg, #0B1533 0%, #081026 46%, #05081A 100%);
+  }
+  #glow { position:absolute; inset:0; opacity:.55;
+    background: radial-gradient(760px 520px at 50% 30%, rgba(201,151,63,.14), rgba(201,151,63,0) 70%); }
+  .speck { position:absolute; border-radius:50%; background:rgba(245,214,123,.8); }
+  #frameOuter { position:absolute; left:34px; top:34px; width:1012px; height:1852px;
+    border:2px solid rgba(201,151,63,.85); opacity:0; }
+  #frameInner { position:absolute; left:46px; top:46px; width:988px; height:1828px;
+    border:1px solid rgba(201,151,63,.38); opacity:0; }
+
+  .gold-text { background:linear-gradient(180deg,#F7DE9A 0%,#EBC96E 38%,#C9973F 72%,#E8CD7E 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .mincho { font-family:'Shippori Mincho', serif; font-weight:700; }
+
+  /* ---------- scene A ---------- */
+  #sceneA { position:absolute; inset:0; }
+
+  .orn { position:absolute; left:50%; transform:translateX(-50%); height:2px; width:600px;
+    background:linear-gradient(90deg, rgba(201,151,63,0), #C9973F 22%, #F5D67B 50%, #C9973F 78%, rgba(201,151,63,0)); }
+  .orn .dia { position:absolute; left:50%; top:50%; width:11px; height:11px;
+    transform:translate(-50%,-50%) rotate(45deg); background:#EBC96E; box-shadow:0 0 8px rgba(235,201,110,.8); }
+  #ornTop { top:206px; transform:translateX(-50%) scaleX(0); }
+  #title { position:absolute; top:238px; left:0; width:1080px; text-align:center;
+    font-size:97px; letter-spacing:.42em; margin-right:-.42em; opacity:0; }
+  #subtitle { position:absolute; top:398px; left:0; width:1080px; text-align:center;
+    font-size:29px; letter-spacing:.34em; margin-right:-.34em; color:rgba(242,234,210,.78);
+    font-weight:500; opacity:0; }
+  #ornUnder { top:470px; width:780px; transform:translateX(-50%) scaleX(0); }
+
+  /* stage (featured card / FROM band) */
+  #stage { position:absolute; top:512px; left:0; width:1080px; height:486px; }
+  .stageCard { position:absolute; left:375px; top:8px; width:330px; height:461px; opacity:0;
+    border:2px solid rgba(201,151,63,.9); outline:1px solid rgba(201,151,63,.35); outline-offset:5px;
+    box-shadow:0 24px 60px rgba(0,0,0,.55), 0 0 44px rgba(201,151,63,.14); }
+  .stageCard img { width:100%; height:100%; object-fit:cover; display:block; }
+  #fromBand { position:absolute; inset:0; opacity:0; text-align:center; }
+  #fromRule { position:absolute; top:150px; left:50%; width:700px; height:2px;
+    transform:translateX(-50%) scaleX(0);
+    background:linear-gradient(90deg, rgba(201,151,63,0), #C9973F 25%, #F5D67B 50%, #C9973F 75%, rgba(201,151,63,0)); }
+  #fromMain { position:absolute; top:186px; left:0; width:1080px; font-size:86px; letter-spacing:.06em; opacity:0; }
+  #fromSub { position:absolute; top:316px; left:0; width:1080px; font-size:41px; font-weight:500;
+    letter-spacing:.14em; color:rgba(242,234,210,.92); opacity:0; }
+
+  /* table */
+  #tableZone { position:absolute; top:0; left:0; width:1080px; }
+  .ruleDbl1 { position:absolute; left:72px; width:936px; height:3px; background:rgba(201,151,63,.95); }
+  .ruleDbl2 { position:absolute; left:72px; width:936px; height:1px; background:rgba(201,151,63,.6); }
+  #tblRuleTop1 { top:1036px; } #tblRuleTop2 { top:1043px; }
+  #tblRuleBot1 { top:1824px; } #tblRuleBot2 { top:1831px; }
+  #thead { position:absolute; top:1056px; left:0; width:1080px; height:42px; opacity:0; }
+  .th { position:absolute; font-size:27px; font-weight:600; letter-spacing:.3em; color:#E3C878; }
+  #thCard { left:196px; } #thMarket { right:302px; } #thJpy { right:72px; }
+  #theadRule { position:absolute; top:1108px; left:72px; width:936px; height:1px;
+    background:rgba(201,151,63,.55); transform-origin:left center; transform:scaleX(0); }
+
+  .row { position:absolute; left:0; width:1080px; height:174px; opacity:0; }
+  .row .hl { position:absolute; left:72px; top:0; width:936px; height:174px; opacity:0;
+    background:linear-gradient(90deg, rgba(201,151,63,.16), rgba(201,151,63,.05) 70%, rgba(201,151,63,0)); }
+  .row .bar { position:absolute; left:72px; top:0; width:4px; height:174px; background:#EBC96E; opacity:0; }
+  .row .thumb { position:absolute; left:96px; top:20px; width:96px; height:134px; opacity:0;
+    border:1px solid rgba(201,151,63,.75); box-shadow:0 8px 22px rgba(0,0,0,.5); }
+  .row .thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+  .row .nm { position:absolute; left:224px; top:38px; width:480px; opacity:0; }
+  .row .nm .n1 { font-family:'Shippori Mincho', serif; font-weight:700; font-size:45px; color:#F5EFDC; letter-spacing:.02em; }
+  .row .nm .n2 { margin-top:10px; font-size:22px; font-weight:500; letter-spacing:.08em; white-space:nowrap; color:rgba(242,234,210,.55); }
+  .row .usd { position:absolute; right:302px; top:44px; font-size:57px; font-weight:600;
+    color:#FFFAEA; letter-spacing:.01em; opacity:0; font-variant-numeric:tabular-nums; }
+  .row .jpy { position:absolute; right:72px; top:56px; font-size:41px; font-weight:500;
+    color:rgba(242,234,210,.88); opacity:0; font-variant-numeric:tabular-nums; }
+  .row .sep { position:absolute; left:72px; bottom:0; width:936px; height:1px;
+    background:rgba(201,151,63,.35); transform-origin:left center; transform:scaleX(0); }
+
+  /* ---------- scene B (closing) ---------- */
+  #sceneB { position:absolute; inset:0; opacity:0; }
+  #bOrn { top:646px; transform:translateX(-50%) scaleX(0); }
+  #bLead { position:absolute; top:700px; left:0; width:1080px; text-align:center; font-size:31px;
+    font-weight:600; letter-spacing:.4em; margin-right:-.4em; color:rgba(227,200,120,.95); opacity:0; }
+  #bDm { position:absolute; top:772px; left:0; width:1080px; text-align:center; font-size:90px;
+    letter-spacing:.1em; margin-right:-.1em; opacity:0; }
+  #bHandle { position:absolute; top:928px; left:0; width:1080px; text-align:center; font-size:47px;
+    font-weight:500; letter-spacing:.16em; color:rgba(242,234,210,.95); opacity:0; }
+  #bNote { position:absolute; top:1752px; left:0; width:1080px; text-align:center; font-size:26px;
+    letter-spacing:.06em; color:rgba(242,234,210,.55); opacity:0; }
+</style>
+</head>
+<body>
+  <div id="bg"></div>
+  <div id="glow"></div>
+  <div id="specks"></div>
+  <div id="frameOuter"></div>
+  <div id="frameInner"></div>
+
+  <div id="sceneA">
+    <div class="orn" id="ornTop"><div class="dia"></div></div>
+    <div id="title" class="mincho gold-text">TODAY'S LIST</div>
+    <div id="subtitle">JAPANESE SINGLES — MARKET INDEX</div>
+    <div class="orn" id="ornUnder"></div>
+
+    <div id="stage">
+      <div class="stageCard" id="sc0"><img src="assets/umb.jpg" alt=""></div>
+      <div class="stageCard" id="sc1"><img src="assets/pik.jpg" alt=""></div>
+      <div class="stageCard" id="sc2"><img src="assets/mew.jpg" alt=""></div>
+      <div class="stageCard" id="sc3"><img src="assets/psy.jpg" alt=""></div>
+      <div id="fromBand">
+        <div id="fromRule"></div>
+        <div id="fromMain" class="mincho gold-text">FROM $19</div>
+        <div id="fromSub">start small, scale up.</div>
+      </div>
+    </div>
+
+    <div id="tableZone">
+      <div class="ruleDbl1" id="tblRuleTop1"></div>
+      <div class="ruleDbl2" id="tblRuleTop2"></div>
+      <div id="thead">
+        <div class="th" id="thCard">CARD</div>
+        <div class="th" id="thMarket">MARKET</div>
+        <div class="th" id="thJpy">JPY</div>
+      </div>
+      <div id="theadRule"></div>
+
+      <div class="row" id="row0" style="top:1120px">
+        <div class="hl"></div><div class="bar"></div>
+        <div class="thumb"><img src="assets/umb.jpg" alt=""></div>
+        <div class="nm"><div class="n1">Umbreon ex</div><div class="n2">SAR 217/187 · TERASTAL FESTIVAL</div></div>
+        <div class="usd">$265.41</div><div class="jpy">¥42,410</div>
+        <div class="sep"></div>
+      </div>
+      <div class="row" id="row1" style="top:1294px">
+        <div class="hl"></div><div class="bar"></div>
+        <div class="thumb"><img src="assets/pik.jpg" alt=""></div>
+        <div class="nm"><div class="n1">Pikachu ex</div><div class="n2">SAR 132/106 · SURGING SPARKS</div></div>
+        <div class="usd">$234.50</div><div class="jpy">¥37,470</div>
+        <div class="sep"></div>
+      </div>
+      <div class="row" id="row2" style="top:1468px">
+        <div class="hl"></div><div class="bar"></div>
+        <div class="thumb"><img src="assets/mew.jpg" alt=""></div>
+        <div class="nm"><div class="n1">Mew ex</div><div class="n2">SAR 205/165 · POKÉMON CARD 151</div></div>
+        <div class="usd">$182.50</div><div class="jpy">¥29,160</div>
+        <div class="sep"></div>
+      </div>
+      <div class="row" id="row3" style="top:1642px">
+        <div class="hl"></div><div class="bar"></div>
+        <div class="thumb"><img src="assets/psy.jpg" alt=""></div>
+        <div class="nm"><div class="n1">Psyduck</div><div class="n2">AR 175/165 · POKÉMON CARD 151</div></div>
+        <div class="usd">$19.00</div><div class="jpy">¥3,040</div>
+        <div class="sep"></div>
+      </div>
+
+      <div class="ruleDbl1" id="tblRuleBot1"></div>
+      <div class="ruleDbl2" id="tblRuleBot2"></div>
+    </div>
+  </div>
+
+  <div id="sceneB">
+    <div class="orn" id="bOrn"><div class="dia"></div></div>
+    <div id="bLead">ONE DM GETS YOU THE FULL QUOTE</div>
+    <div id="bDm" class="mincho gold-text">DM “SAR LIST”</div>
+    <div id="bHandle">@your_account</div>
+    <div id="bNote">Prices: PriceCharting ungraded index, Nov 13. Not a quote.</div>
+  </div>
+
+<script>
+  const $ = id => document.getElementById(id);
+  const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
+  const prog = (t, s, d) => clamp((t - s) / d, 0, 1);
+  const eoc = p => 1 - Math.pow(1 - p, 3);            // easeOutCubic
+  const eio = p => p < .5 ? 4*p*p*p : 1 - Math.pow(-2*p + 2, 3) / 2;
+
+  // deterministic gold specks
+  (function(){
+    let seed = 20261113;
+    const rnd = () => (seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
+    const wrap = $('specks');
+    window._specks = [];
+    for (let i = 0; i < 42; i++) {
+      const d = document.createElement('div');
+      d.className = 'speck';
+      const s = 2 + rnd() * 2.4;
+      d.style.width = d.style.height = s.toFixed(1) + 'px';
+      d.style.left = (30 + rnd() * 1020).toFixed(0) + 'px';
+      d.style.top = (30 + rnd() * 1860).toFixed(0) + 'px';
+      wrap.appendChild(d);
+      window._specks.push({el: d, base: .16 + rnd() * .3, ph: rnd() * 6.28, sp: .7 + rnd() * .9});
+    }
+  })();
+
+  const ROW_S = [2.05, 3.45, 4.85, 6.25];
+  const rows = [0,1,2,3].map(i => ({
+    root: $('row' + i),
+    hl: document.querySelector('#row' + i + ' .hl'),
+    bar: document.querySelector('#row' + i + ' .bar'),
+    thumb: document.querySelector('#row' + i + ' .thumb'),
+    nm: document.querySelector('#row' + i + ' .nm'),
+    usd: document.querySelector('#row' + i + ' .usd'),
+    jpy: document.querySelector('#row' + i + ' .jpy'),
+    sep: document.querySelector('#row' + i + ' .sep'),
+  }));
+  const cards = [0,1,2,3].map(i => $('sc' + i));
+  const tblRules = ['tblRuleTop1','tblRuleTop2','tblRuleBot1','tblRuleBot2'].map($);
+
+  window.seek = function(t){
+    /* background life */
+    $('glow').style.opacity = (.5 + .13 * Math.sin(t * .9)).toFixed(3);
+    for (const s of window._specks)
+      s.el.style.opacity = (s.base * (.72 + .28 * Math.sin(t * s.sp + s.ph))).toFixed(3);
+    const fr = eoc(prog(t, .15, 1.1));
+    $('frameOuter').style.opacity = (.92 * fr).toFixed(3);
+    $('frameInner').style.opacity = (.92 * fr).toFixed(3);
+
+    /* ---- intro 0–1.5 ---- */
+    const ornP = eoc(prog(t, .3, .75));
+    $('ornTop').style.transform = `translateX(-50%) scaleX(${ornP.toFixed(3)})`;
+    const tp = eoc(prog(t, .08, .95));
+    const title = $('title');
+    title.style.opacity = tp.toFixed(3);
+    title.style.letterSpacing = (.42 - .2 * tp).toFixed(3) + 'em';
+    title.style.transform = `translateY(${((1 - tp) * 14).toFixed(1)}px)`;
+    const sp = eoc(prog(t, .72, .5));
+    const sub = $('subtitle');
+    sub.style.opacity = sp.toFixed(3);
+    sub.style.transform = `translateY(${((1 - sp) * 9).toFixed(1)}px)`;
+    $('ornUnder').style.transform = `translateX(-50%) scaleX(${eoc(prog(t, .5, .7)).toFixed(3)})`;
+
+    /* ---- table header 1.5–2.05 ---- */
+    const hp = prog(t, 1.5, .45);
+    for (const r of tblRules) {
+      r.style.transformOrigin = 'left center';
+      r.style.transform = `scaleX(${eoc(hp).toFixed(3)})`;
+      r.style.opacity = hp.toFixed(3);
+    }
+    $('thead').style.opacity = eoc(prog(t, 1.58, .4)).toFixed(3);
+    $('theadRule').style.transform = `scaleX(${eoc(prog(t, 1.55, .5)).toFixed(3)})`;
+
+    /* ---- rows + stage cards 2.05–8.5 ---- */
+    rows.forEach((r, i) => {
+      const s = ROW_S[i];
+      const pIn = eoc(prog(t, s, .45));
+      r.root.style.opacity = pIn.toFixed(3);
+      r.root.style.transform = `translateX(${(-58 * (1 - pIn)).toFixed(1)}px)`;
+      const set = (el, d0) => {
+        const p = eoc(prog(t, s + d0, .38));
+        el.style.opacity = p.toFixed(3);
+        el.style.transform = `translateX(${(-26 * (1 - p)).toFixed(1)}px)`;
+      };
+      set(r.thumb, 0); set(r.nm, .07); set(r.usd, .14); set(r.jpy, .2);
+      r.sep.style.transform = `scaleX(${eoc(prog(t, s + .1, .5)).toFixed(3)})`;
+      const endH = (i < 3) ? ROW_S[i + 1] + .05 : 8.45;
+      const hlA = prog(t, s + .18, .3) * (1 - prog(t, endH, .32));
+      r.hl.style.opacity = (.95 * hlA).toFixed(3);
+      r.bar.style.opacity = hlA.toFixed(3);
+
+      /* stage card crossfade */
+      const c = cards[i];
+      let co = prog(t, s, .45) - (i < 3 ? prog(t, ROW_S[i + 1], .45) : prog(t, 8.5, .4));
+      co = clamp(co, 0, 1);
+      const drift = 1 + .035 * clamp((t - s) / 1.4, 0, 1);
+      c.style.opacity = eio(co).toFixed(3);
+      c.style.transform = `scale(${drift.toFixed(4)}) translateY(${(-6 * clamp((t - s) / 1.4, 0, 1)).toFixed(1)}px)`;
+    });
+
+    /* ---- FROM band 8.5–11 ---- */
+    const fb = $('fromBand');
+    fb.style.opacity = (prog(t, 8.5, .3) * (1 - prog(t, 10.92, .3))).toFixed(3);
+    $('fromRule').style.transform = `translateX(-50%) scaleX(${eoc(prog(t, 8.68, .5)).toFixed(3)})`;
+    const fm = eoc(prog(t, 8.9, .55));
+    const fmEl = $('fromMain');
+    fmEl.style.opacity = fm.toFixed(3);
+    fmEl.style.transform = `translateY(${((1 - fm) * 16).toFixed(1)}px)`;
+    const fs = eoc(prog(t, 9.3, .5));
+    const fsEl = $('fromSub');
+    fsEl.style.opacity = fs.toFixed(3);
+    fsEl.style.transform = `translateY(${((1 - fs) * 12).toFixed(1)}px)`;
+
+    /* ---- closing 11–13 ---- */
+    $('sceneA').style.opacity = (1 - prog(t, 11.0, .45)).toFixed(3);
+    $('sceneB').style.opacity = prog(t, 11.12, .45).toFixed(3);
+    $('bOrn').style.transform = `translateX(-50%) scaleX(${eoc(prog(t, 11.3, .6)).toFixed(3)})`;
+    const bl = eoc(prog(t, 11.28, .5));
+    const blEl = $('bLead');
+    blEl.style.opacity = bl.toFixed(3);
+    blEl.style.transform = `translateY(${((1 - bl) * 10).toFixed(1)}px)`;
+    const bd = eoc(prog(t, 11.42, .55));
+    const bdEl = $('bDm');
+    bdEl.style.opacity = bd.toFixed(3);
+    bdEl.style.transform = `translateY(${((1 - bd) * 18).toFixed(1)}px)`;
+    const bh = eoc(prog(t, 11.68, .45));
+    $('bHandle').style.opacity = bh.toFixed(3);
+    $('bNote').style.opacity = eoc(prog(t, 11.9, .45)).toFixed(3);
+  };
+
+  window.ready = (async () => {
+    await document.fonts.load('700 97px "Shippori Mincho"');
+    await document.fonts.load('600 57px "Anton"');
+    await document.fonts.load('500 41px "Anton"');
+    await document.fonts.ready;
+    window.fontCheck = {
+      'Shippori Mincho': document.fonts.check('700 97px "Shippori Mincho"'),
+      'Anton': document.fonts.check('600 57px "Anton"'),
+    };
+    window.seek(0);
+  })();
+</script>
+</body>
+</html>

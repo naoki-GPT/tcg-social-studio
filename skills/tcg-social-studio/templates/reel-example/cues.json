@@ -1,0 +1,21 @@
+{
+  "duration": 13.0,
+  "cues": [
+    {"file": "whip_01.mp3", "t": 0.3, "gain_db": -10, "trim": 1.3},
+    {"file": "keyword_pop_04.mp3", "t": 1.5, "gain_db": -10, "trim": 1.0},
+    {"file": "whip_03.mp3", "t": 2.05, "gain_db": -10, "trim": 0.9},
+    {"file": "coin_01.mp3", "t": 2.23, "gain_db": -10, "trim": 0.85},
+    {"file": "keyword_pop_08.mp3", "t": 2.37, "gain_db": -10, "trim": 0.9},
+    {"file": "whip_03.mp3", "t": 3.45, "gain_db": -10, "trim": 0.9},
+    {"file": "coin_01.mp3", "t": 3.63, "gain_db": -10, "trim": 0.85},
+    {"file": "keyword_pop_08.mp3", "t": 3.77, "gain_db": -10, "trim": 0.9},
+    {"file": "whip_03.mp3", "t": 4.85, "gain_db": -10, "trim": 0.9},
+    {"file": "coin_01.mp3", "t": 5.03, "gain_db": -10, "trim": 0.85},
+    {"file": "keyword_pop_08.mp3", "t": 5.17, "gain_db": -10, "trim": 0.9},
+    {"file": "whip_03.mp3", "t": 6.25, "gain_db": -10, "trim": 0.9},
+    {"file": "coin_01.mp3", "t": 6.43, "gain_db": -10, "trim": 0.85},
+    {"file": "keyword_pop_08.mp3", "t": 6.57, "gain_db": -10, "trim": 0.9},
+    {"file": "cash_register_01.mp3", "t": 8.68, "gain_db": -10},
+    {"file": "flash_01.mp3", "t": 11.42, "gain_db": -10, "trim": 1.3}
+  ]
+}

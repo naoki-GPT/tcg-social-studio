@@ -1,4 +1,4 @@
-# ローカル環境と秘密情報
+# local environment and secrets
 .venv/
 node_modules/
 __pycache__/
@@ -16,7 +16,7 @@ credentials*.json
 .DS_Store
 Thumbs.db
 
-# 案件の素材・根拠・完成物はソースから分ける
+# production output stays outside this repository
 /runs/
 /outputs/
 /private/
@@ -25,8 +25,5 @@ Thumbs.db
 *.mp4
 *.mov
 *.wav
-*.mp3
 *.zip
-
-# 実行時の記録
 *.log

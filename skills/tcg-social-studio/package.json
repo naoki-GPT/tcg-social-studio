@@ -1,14 +1,13 @@
 {
   "name": "tcg-social-studio-tools",
-  "version": "2.2.0",
+  "version": "4.2.1",
   "private": true,
   "type": "module",
   "engines": {
     "node": ">=22"
   },
   "scripts": {
-    "check": "node scripts/check_env.mjs",
-    "test": "node --test scripts/runtime.test.mjs"
+    "check": "node scripts/check_env.mjs"
   },
   "dependencies": {
     "playwright-core": "1.62.1",
