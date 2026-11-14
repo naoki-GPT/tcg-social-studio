@@ -1,6 +1,6 @@
 # 最初に読む
 
-トレカ海外販売の毎日の投稿を、投稿の直前まで自動で作るスキルです（4.2.3）。
+トレカ海外販売の毎日の投稿を、投稿の直前まで自動で作るスキルです（4.3.0）。
 このページは**初回に1度だけ**行う準備です。2日目からは `SKILL.md` だけで進みます。
 
 ## 1. 渡す人がすること
@@ -11,7 +11,7 @@
 
 ひな形：https://docs.google.com/spreadsheets/d/19XXnnN8qqeR9QfVx0vm2pTFGMYACJrmC0l2njbYKO2M/edit
 
-1. ひな形を開き、「ファイル」→「コピーを作成」を選ぶ。名前は `日付 相手の名前 TCG投稿づくり 運用表` にする。
+1. ひな形を開き、「ファイル」→「コピーを作成」を選ぶ。名前は `日付 相手の名前 TCG投稿づくり 運用表` に書き換える（「ひな形」「のコピー」の文字は消す）。
 2. コピーしてできた表の「共有」で、このスキルを動かすAIのGoogleアカウントを「編集者」で追加する。
 3. コピーしてできた表のアドレスを、`client.json` の `sheet_url` に書く。
 
@@ -57,12 +57,46 @@ python -m pip install -r requirements.txt
 python -m pip install -r requirements-analysis.txt
 npm install
 node scripts/check_env.mjs
+node scripts/check_client.mjs
 ```
 
-`check_env.mjs` がすべて `[OK]` になれば準備完了です。`[ERROR]` が出た行だけ直します。
+`check_env.mjs` がすべて `[OK]` になれば、道具の準備は完了です。`[ERROR]` が出た行だけ直します。
+`check_client.mjs` は、`client.json` の足りない欄を一覧で出します。書き方の見本は `client.example.json` です。
 
-- ブラウザーは、PCに入っている Chrome か Edge をそのまま使います。どちらも無いときだけ `npx playwright-core install chromium` を実行します。
+### Pythonの部品を入れられないとき
+
+`pip install` が `error: externally-managed-environment` と答えるPCでは、PC全体には入れず、スキルのフォルダの中に専用の環境を作ります。
+
+Windows：
+
+```powershell
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements.txt -r requirements-analysis.txt
+```
+
+Mac・Linux：
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt -r requirements-analysis.txt
+```
+
+専用の環境を作ったPCでは、説明書に `python scripts/...` と書いてある所を、すべて `.venv\Scripts\python.exe scripts/...`（Mac・Linuxは `.venv/bin/python scripts/...`）に読み替えます。`check_env.mjs` は、専用の環境があればそちらを確かめます。
+
+### ブラウザーが無いとき
+
+ブラウザーは、PCに入っている Chrome か Edge をそのまま使います。`check_env.mjs` が `[ERROR] browser` を出したときは、次を実行します。試験用のChromeがスキルのフォルダの `.browsers/` に入り、次からは自動で使われます。
+
+```powershell
+npm run browser
+```
+
+別の場所にあるChromeを使いたいときは、環境変数 `CHROME_PATH` にその実行ファイルの場所を入れます。
+
+### そのほか
+
 - 書体（`fonts/`）と効果音（`se-pack/`）は同梱済みです。
+- 途中で止まったら [止まったときの早見表](references/troubleshooting.md) を見ます。
 
 ## 3. 効果音の扱い
 

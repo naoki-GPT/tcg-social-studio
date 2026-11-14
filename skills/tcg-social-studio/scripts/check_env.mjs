@@ -24,7 +24,7 @@ try{
  const skipped=tried.filter(t=>!t.ok).map(t=>`${t.used} (${t.reason})`);
  if(skipped.length)info('browser tried first',skipped.join(', '));
 }catch(e){
- add('browser',false,e.message.split('. ')[0],'Install Google Chrome or Microsoft Edge, or run "npx playwright-core install chromium" in the skill folder, or set CHROME_PATH.');
+ add('browser',false,e.message.split('. ')[0],'Run "npm run browser" in the skill folder (downloads a test Chrome into .browsers/). Or install Google Chrome or Microsoft Edge, or set CHROME_PATH.');
  if(e.tried)info('browser tried',e.tried.map(t=>`${t.used} (${t.reason||'ok'})`).join(', '));
 }
 
@@ -34,7 +34,9 @@ catch(e){add('ffmpeg',false,'not found','Run "npm install" in the skill folder, 
 
 // 4. python と Pillow
 let python=null;
-for(const [cmd,pre] of [['python',[]],['py',['-3']],['python3',[]]]){
+// スキル内の専用環境（.venv）があれば、それを先に使う
+const venvPy=[join(skillRoot,'.venv','Scripts','python.exe'),join(skillRoot,'.venv','bin','python')].find(p=>existsSync(p));
+for(const [cmd,pre] of [...(venvPy?[[venvPy,[]]]:[]),['python',[]],['py',['-3']],['python3',[]]]){
  try{
   const r=spawnSync(cmd,[...pre,'-c','import sys;print("%d.%d.%d"%sys.version_info[:3])'],{encoding:'utf8',windowsHide:true});
   if(r.status===0&&/^\d+\.\d+\.\d+/.test((r.stdout||'').trim())){python={cmd,pre,version:r.stdout.trim()};break;}
@@ -46,7 +48,7 @@ if(python){
  add('python',maj===3&&min>=9,`${python.version} (command: ${label})`,'Install Python 3.9 or newer.');
  const mod=name=>{const r=spawnSync(python.cmd,[...python.pre,'-c',`import ${name} as m;print(m.__version__)`],{encoding:'utf8',windowsHide:true});return r.status===0?(r.stdout||'').trim():null;};
  const pil=mod('PIL');
- add('pillow',Boolean(pil),pil||'not installed',`Run: ${label} -m pip install -r requirements.txt`);
+ add('pillow',Boolean(pil),pil||'not installed',`Run: ${label} -m pip install -r requirements.txt  (if pip answers "externally-managed-environment", make a private environment first: ${label} -m venv .venv , then use the python inside .venv. See START_HERE.md section 2.)`);
  const cv=mod('cv2'),np=mod('numpy');
  info('analysis libraries (optional)',cv&&np?`opencv ${cv}, numpy ${np}`:`not installed. Needed only for analyze_reference_video.py: ${label} -m pip install -r requirements-analysis.txt`);
 }else{

@@ -1,5 +1,6 @@
 node_modules/
 .venv/
+.browsers/
 __pycache__/
 *.pyc
 .env

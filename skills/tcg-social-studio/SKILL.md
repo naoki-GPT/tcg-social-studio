@@ -5,7 +5,7 @@ description: トレカ海外販売の毎日のInstagram・Facebook投稿を、�
 
 # 毎日3案を作り、人が選んだものを投稿する
 
-版：4.2.3／2026-11-14。
+版：4.3.0／2026-11-14。
 
 このスキルの仕事は2つある。どちらも、人に頼まれるのを待たずに定期実行で動く。
 
@@ -21,7 +21,7 @@ description: トレカ海外販売の毎日のInstagram・Facebook投稿を、�
 ## 進め方の決まり
 
 - **途中で人に質問しない。** 分からないことは調べて自分で決め、決めた理由を表の「選んだ理由」に書く。決められない案は捨てて、別の商品か別の参考で作り直す。
-- **止まるのは、[client.json](client.json) の必須欄が空のときと、`sheet_url` がひな形の表のままのときだけ。** 何を直せばよいかを伝えて終わる。
+- **止まるのは、[client.json](client.json) の必須欄が空のときと、`sheet_url` がひな形の表のままのときだけ。** 毎回最初に `node scripts/check_client.mjs` を実行し、`[ERROR]` が出たら、出た欄をそのまま伝えて終わる。道具が動かないときは止まらず、[止まったときの早見表](references/troubleshooting.md)で直して続ける。
 - **人がするのはチェックだけ。** 「投稿OK」の欄は人だけが触る。
 - **素材は自分で取りに行く。** 参考投稿も商品画像も、開いて保存するところまでがこのスキルの仕事。
 
@@ -53,7 +53,7 @@ description: トレカ海外販売の毎日のInstagram・Facebook投稿を、�
 | 4 | 参考を測って、3案を作る | [参考の測り方](references/reproduction.md)／[作り方](references/production.md)／[型カード](references/types.md) |
 | 5 | 画面の文字と本文を、英語と日本語訳で書く（本文はInstagramとFacebookで同じ1つ） | [文章](references/copy.md) |
 | 6 | 完成物を開いて検品し、不合格は直す | [検品](references/check.md) |
-| 7 | 「投稿」タブに3行、「素材」タブに使った素材を書き、読み戻して確かめる | [表の書き方](references/sheet.md) |
+| 7 | 完成物と「見た目」の画像を共有フォルダに上げる。「投稿」タブに3行、「素材」タブに使った素材を書き、読み戻して確かめる | [表の書き方](references/sheet.md) |
 
 ### 3案の組み合わせの決まり
 
@@ -90,6 +90,8 @@ description: トレカ海外販売の毎日のInstagram・Facebook投稿を、�
 | したいこと | 実行するもの |
 |---|---|
 | 環境がそろっているか確かめる | `node scripts/check_env.mjs` |
+| `client.json` の足りない欄を出す | `node scripts/check_client.mjs` |
+| ブラウザーが無いPCに試験用のChromeを入れる | `npm run browser` |
 | 参考投稿の原本を順番どおり取り込む | `python scripts/import_reference.py` |
 | 参考動画のカット候補を出す | `python scripts/analyze_reference_video.py` |
 | カルーセル・画像を書き出す | `node scripts/shoot_slides.mjs` |

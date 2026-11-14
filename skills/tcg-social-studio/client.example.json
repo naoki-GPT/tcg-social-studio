@@ -1,0 +1,38 @@
+{
+  "_説明": "記入の見本。このファイルは読むだけで、実際に書くのは client.json。値はすべて架空の例。",
+
+  "client_name": "山田さん",
+  "shop_name_en": "Yamada TCG Japan",
+  "instagram_handle": "@yamada_tcg_japan",
+  "facebook_page": "Yamada TCG Japan",
+
+  "sheet_url": "https://docs.google.com/spreadsheets/d/（ひな形をコピーして作った表のID）/edit",
+
+  "output_folder": "C:/Users/yamada/Documents/tcg-posts",
+  "share_folder_url": "https://drive.google.com/drive/folders/（共有フォルダのID）",
+
+  "target_market": "US",
+  "post_language": "en",
+  "platforms": ["instagram", "facebook"],
+
+  "daily_set": ["リール", "カルーセル", "画像"],
+  "create_time": "06:00",
+  "post_times": ["08:00", "12:00", "21:00"],
+
+  "contact": {
+    "type": "dm",
+    "link_url": ""
+  },
+
+  "closing": {
+    "handle_text": "@yamada_tcg_japan",
+    "logo_file": ""
+  },
+
+  "reference_accounts": [
+    "tcg_ninja_japan_",
+    "samurai_sword_tokyo_jp"
+  ],
+
+  "do_not": ["自分の売値を書かない"]
+}

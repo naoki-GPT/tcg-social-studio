@@ -1,6 +1,6 @@
 // v1: 配布先の依存部品・ブラウザ・出力を扱う共通処理。個人の絶対パスを持たない。
 import {createRequire} from 'node:module';
-import {existsSync,mkdirSync,readFileSync} from 'node:fs';
+import {existsSync,mkdirSync,readFileSync,readdirSync} from 'node:fs';
 import {resolve,join} from 'node:path';
 import {pathToFileURL} from 'node:url';
 export function args(argv){const positional=[],o={};for(let i=0;i<argv.length;i++){if(argv[i].startsWith('--')){const key=argv[i].slice(2);if(!argv[i+1]||argv[i+1].startsWith('--'))throw Error('Missing value: '+key);o[key]=argv[++i]}else positional.push(argv[i]);}return {...o,input:positional[0]};}
@@ -57,9 +57,22 @@ export function loadChromium(){
  catch(e){throw Error('playwright-core is not installed. Run "npm install" in the skill folder (or set TCG_NODE_MODULES). '+e.message);}
 }
 
+/** スキルのフォルダの .browsers/ に入れた試験用Chrome（npm run browser で入る）の実行ファイルを探す。無ければ ''。 */
+export function findLocalChrome(){
+ const names=new Set(['chrome.exe','chrome','Google Chrome for Testing']);
+ const walk=(dir,depth)=>{
+  if(depth>7)return '';
+  let entries=[];try{entries=readdirSync(dir,{withFileTypes:true});}catch{return '';}
+  for(const e of entries)if(!e.isDirectory()&&names.has(e.name))return join(dir,e.name);
+  for(const e of entries)if(e.isDirectory()){const hit=walk(join(dir,e.name),depth+1);if(hit)return hit;}
+  return '';
+ };
+ return walk(join(skillRoot,'.browsers'),0);
+}
+
 /**
  * ブラウザを順に試し、最初に起動できたものを返す。
- * 順番: CHROME_PATH → playwright 同梱 chromium（実体があれば）→ channel:'chrome' → channel:'msedge'
+ * 順番: CHROME_PATH → スキル内 .browsers/ の試験用Chrome → playwright 同梱 chromium（実体があれば）→ channel:'chrome' → channel:'msedge'
  * 戻り値: {browser, used, tried}  used は 'CHROME_PATH' | 'playwright-chromium' | 'chrome' | 'msedge'
  */
 export async function launchBrowser(){
@@ -69,6 +82,8 @@ export async function launchBrowser(){
   if(existsSync(p))candidates.push({used:'CHROME_PATH',options:{executablePath:p}});
   else tried.push({used:'CHROME_PATH',ok:false,reason:'file not found'});
  }
+ const local=findLocalChrome();
+ if(local)candidates.push({used:'skill .browsers',options:{executablePath:local}});
  let bundled='';try{bundled=chromium.executablePath();}catch{bundled='';}
  if(bundled&&existsSync(bundled))candidates.push({used:'playwright-chromium',options:{}});
  else tried.push({used:'playwright-chromium',ok:false,reason:'not installed'});
@@ -80,7 +95,7 @@ export async function launchBrowser(){
    return {browser,used:c.used,version:browser.version(),tried};
   }catch(e){tried.push({used:c.used,ok:false,reason:/is not found|doesn't exist|ENOENT/i.test(String(e.message||e))?'not installed':String(e.message||e).split('\n')[0].slice(0,200)});}
  }
- const err=Error('No browser could be started. Install Google Chrome or Microsoft Edge, or run "npx playwright-core install chromium" in the skill folder, or set CHROME_PATH to a Chromium-based browser executable.');
+ const err=Error('No browser could be started. Run "npm run browser" in the skill folder (downloads a test Chrome into .browsers/), or install Google Chrome or Microsoft Edge, or set CHROME_PATH to a Chromium-based browser executable.');
  err.tried=tried;throw err;
 }
 
