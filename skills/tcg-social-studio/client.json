@@ -21,8 +21,13 @@
 
   "contact": {
     "type": "dm",
-    "link_url": ""
+    "link_url": "",
+    "keyword": "PRICE LIST"
   },
+
+  "price_display": "market",
+  "quote_markup_percent": 10,
+  "footage_folder": "",
 
   "closing": {
     "handle_text": "",

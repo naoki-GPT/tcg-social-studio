@@ -21,8 +21,13 @@
 
   "contact": {
     "type": "dm",
-    "link_url": ""
+    "link_url": "",
+    "keyword": "PRICE LIST"
   },
+
+  "price_display": "quote",
+  "quote_markup_percent": 10,
+  "footage_folder": "",
 
   "closing": {
     "handle_text": "@yamada_tcg_japan",
@@ -34,5 +39,5 @@
     "samurai_sword_tokyo_jp"
   ],
 
-  "do_not": ["自分の売値を書かない"]
+  "do_not": ["他社の名前を出さない"]
 }

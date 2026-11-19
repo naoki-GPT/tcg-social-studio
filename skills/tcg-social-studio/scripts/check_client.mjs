@@ -34,6 +34,19 @@ const type=text(c.contact&&c.contact.type);
 if(!['dm','link'].includes(type))bad('contact.type','must be "dm" or "link".');
 else if(type==='link'&&!text(c.contact.link_url))bad('contact.link_url','empty, but contact.type is "link".');
 else ok('contact.type',type);
+// 5.0.0: 価格の出し方・合言葉・実写の置き場。書いていなければ既定（market／PRICE LIST／実写なし）で進む。
+const pd=text(c.price_display)||'market';
+if(!['quote','market'].includes(pd))bad('price_display','must be "quote" (show your own dated price) or "market" (show market prices only).');
+else ok('price_display',pd);
+if(c.quote_markup_percent!==undefined&&c.quote_markup_percent!==''){
+ const m=Number(c.quote_markup_percent);
+ if(!Number.isFinite(m)||m<0||m>100)bad('quote_markup_percent','write a number from 0 to 100 (for example 10).');
+ else ok('quote_markup_percent',m);
+}
+ok('contact.keyword',text(c.contact&&c.contact.keyword)||'PRICE LIST (default)');
+const footage=text(c.footage_folder);
+if(footage&&!existsSync(footage))bad('footage_folder','folder not found: '+footage+'. Fix the path, or leave it empty to work without your own footage.');
+else ok('footage_folder',footage||'(empty: no own footage)');
 
 const sheet=text(c.sheet_url);
 if(sheet&&sheet.includes(TEMPLATE_SHEET_ID))bad('sheet_url','this is the template sheet itself. Open it, choose File > Make a copy, and write the address of the copy.');
