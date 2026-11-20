@@ -61,6 +61,13 @@ if(c.games!==undefined){
  else ok('games',c.games.join(', '));
 }
 
+// 5.2.0: 主に売る商品の種類。書いていなければ今までどおり。
+if(c.focus_products!==undefined){
+ const kinds=['BOX','シングル','PSA','ARバルク','パック'];
+ if(!Array.isArray(c.focus_products)||!c.focus_products.every(k=>kinds.includes(k)))bad('focus_products','write as [] or a list chosen from '+kinds.join(' / ')+' (for example ["シングル","PSA"]).');
+ else ok('focus_products',c.focus_products.length?c.focus_products.join(', '):'(empty: default mix)');
+}
+
 const sheet=text(c.sheet_url);
 if(sheet&&sheet.includes(TEMPLATE_SHEET_ID))bad('sheet_url','this is the template sheet itself. Open it, choose File > Make a copy, and write the address of the copy.');
 else if(sheet&&!/docs\.google\.com\/spreadsheets\/d\/[\w-]{20,}/.test(sheet))bad('sheet_url','does not look like a Google Sheets address.');

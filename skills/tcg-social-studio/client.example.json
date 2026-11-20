@@ -32,6 +32,7 @@
   "plan_approval": "chat",
   "plan_count": 5,
   "games": ["pokemon"],
+  "focus_products": [],
 
   "closing": {
     "handle_text": "@yamada_tcg_japan",

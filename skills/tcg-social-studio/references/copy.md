@@ -18,7 +18,7 @@
 ## 画面の文字
 
 - **最初の画面で、「誰向け・何が・いくら・どう頼むか」が分かるようにする。** 画像の1枚目、動画の0秒の時点で、この4つのうち読めないものがあれば直す。
-- 上に、誰向けの何の投稿かを1行で置く（例：`Japanese Pokémon cards — direct from Japan`、店向けなら `For shops & resellers`）。リールでは最後まで出したままにする。
+- 上に、誰向けの何の投稿かを1行で置く。誰向けかは、ネタで決めた1つを言い切る（例：`For new resellers — Japanese Pokémon cards from Japan`、`For shops & resellers — …`、`For collectors — …`）。リールでは最後まで出したままにする。
 - 金額を、画面でいちばん大きい文字にする。
 - 買い手が実際にコメントで使う言葉は、`Price?` `How much?` `Still available?` `What's shipping to UK?` `How do I buy?`。投稿の側で先に、価格・頼めるかどうか・送料の扱い・買い方のどれかを出しておく。
 - 商品がすぐ分かる名前、読める比較のラベル（例：`JAPAN / OVERSEAS`、`ENGLISH / JAPANESE`）、数字を使う。国旗の絵だけに意味を頼らない。通貨は記号と3文字の表記をそろえる。
@@ -35,6 +35,9 @@
 4. 行動を1つだけ書く。
 
 - 友人とその商品の話をするような、自然で短い英語にする。一般的なほめ言葉、毎回同じ説明は足さない。
+- **主語は `I` にする。** DMを返す本人が話している文にする（`I reply`、`I pack`、`I send`）。`We` `our team` は使わない。`client.json` の `do_not` に指定があれば、それに従う。
+- **リセラーや店に向けた案の買う理由は、「再販しやすい」「回転が速い」「予算に合わせて組める」から選ぶ**（例：`easy to resell`、`moves fast`、`I can build a lot to fit your budget`）。そう言える根拠（海外で売れた記録、頼める最小の数など）を、本文に1つ添える。
+- **利益の約束に読める言い方をしない。** `You'll make $…`、`guaranteed profit`、`easy money`、`double your money` など、利益の額や率を約束する言葉を使わない。
 - 訴求は価格差だけに固定しない。価格の意外さ、仕入れ候補の比較、店の補充、売る単位の見落とし、探す手間、など客に合う切り口を選ぶ。
 - 解説や分析だけで終わらせない。値動きや相場の話をした投稿も、最後は今日の価格と頼み方にする。
 - カルーセルと画像は、本文の1行目に行動の案内を書く（最後のページだけに置かない）。
@@ -45,7 +48,7 @@
 
 DMなら、何を送ると何が分かるかまで書く。
 
-> DM “PRICE LIST” with the item, quantity and your country. We reply with today's price and shipping total first.
+> DM “PRICE LIST” with the item, quantity and your country. I reply with today's price and shipping total first.
 > 「商品名・希望数・国を添えて『PRICE LIST』とDMしてください。今日の価格と、送料込みの合計を先にお返しします。」
 
 - **合言葉は `client.json` の `contact.keyword` の1つだけを、毎回使う。** 商品ごとに変えない。どの投稿から来た人も同じ行動になるようにするため。空のときは `PRICE LIST` を使う。
@@ -114,7 +117,7 @@ DMなら、何を送ると何が分かるかまで書く。
 ## 書いてよいこと・言い切らないこと
 
 - 書いてよい：市場の価格、売れた記録、値動き、取り扱っている種類、「相談してください」「見積もりを出します」。`price_display` が `quote` のときは、日付を付けた自分の見積もり価格。
-- 言い切らない：確かめていない在庫数、発送日、最安、必ず利益が出る、人気No.1。
+- 言い切らない：確かめていない在庫数、発送日、最安、必ず利益が出る、人気No.1。関税や税金の率・額（国と時期で変わる。「合計を先に返します」と書く）。
 - 他社の投稿にある実績・在庫・発送の早さは、自社のこととして書かない。
 
 ## 最後に確かめる
