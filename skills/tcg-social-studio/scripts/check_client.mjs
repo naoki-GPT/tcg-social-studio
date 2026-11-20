@@ -47,6 +47,19 @@ ok('contact.keyword',text(c.contact&&c.contact.keyword)||'PRICE LIST (default)')
 const footage=text(c.footage_folder);
 if(footage&&!existsSync(footage))bad('footage_folder','folder not found: '+footage+'. Fix the path, or leave it empty to work without your own footage.');
 else ok('footage_folder',footage||'(empty: no own footage)');
+// 5.1.0: ネタの承認・ネタの数・扱うゲーム。書いていなければ既定（off／5／pokemon）で進む。
+const pa=text(c.plan_approval)||'off';
+if(!['chat','off'].includes(pa))bad('plan_approval','must be "chat" (show ideas in chat and make only the chosen ones) or "off" (make without asking).');
+else ok('plan_approval',pa);
+if(c.plan_count!==undefined&&c.plan_count!==''){
+ const n=Number(c.plan_count);
+ if(!Number.isInteger(n)||n<1||n>10)bad('plan_count','write a whole number from 1 to 10 (for example 5).');
+ else ok('plan_count',n);
+}
+if(c.games!==undefined){
+ if(!Array.isArray(c.games)||!c.games.length||!c.games.every(g=>['pokemon','onepiece'].includes(g)))bad('games','write as ["pokemon"] or ["pokemon","onepiece"].');
+ else ok('games',c.games.join(', '));
+}
 
 const sheet=text(c.sheet_url);
 if(sheet&&sheet.includes(TEMPLATE_SHEET_ID))bad('sheet_url','this is the template sheet itself. Open it, choose File > Make a copy, and write the address of the copy.');

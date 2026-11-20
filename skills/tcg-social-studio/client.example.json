@@ -29,6 +29,10 @@
   "quote_markup_percent": 10,
   "footage_folder": "",
 
+  "plan_approval": "chat",
+  "plan_count": 5,
+  "games": ["pokemon"],
+
   "closing": {
     "handle_text": "@yamada_tcg_japan",
     "logo_file": ""
@@ -36,7 +40,9 @@
 
   "reference_accounts": [
     "tcg_ninja_japan_",
-    "samurai_sword_tokyo_jp"
+    "samurai_sword_tokyo_jp",
+    "kyoshop_poken.jpn",
+    "beclearjapan"
   ],
 
   "do_not": ["他社の名前を出さない"]
