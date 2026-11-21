@@ -49,7 +49,7 @@ if(footage&&!existsSync(footage))bad('footage_folder','folder not found: '+foota
 else ok('footage_folder',footage||'(empty: no own footage)');
 // 5.1.0: ネタの承認・ネタの数・扱うゲーム。書いていなければ既定（off／5／pokemon）で進む。
 const pa=text(c.plan_approval)||'off';
-if(!['chat','off'].includes(pa))bad('plan_approval','must be "chat" (show ideas in chat and make only the chosen ones) or "off" (make without asking).');
+if(!['chat','off','all'].includes(pa))bad('plan_approval','must be "chat" (show ideas in chat and make only the chosen ones), "off" (make without asking), or "all" (show ideas in chat, then make all of them without waiting).');
 else ok('plan_approval',pa);
 if(c.plan_count!==undefined&&c.plan_count!==''){
  const n=Number(c.plan_count);
